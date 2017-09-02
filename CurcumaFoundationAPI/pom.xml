@@ -19,5 +19,9 @@
    		<groupId>curcuma</groupId>
    		<artifactId>CurcumaKeyValueObservingAPI</artifactId>
    	</dependency>
+   	<dependency>
+   		<groupId>curcuma</groupId>
+   		<artifactId>CurcumaKeyValueBindingAPI</artifactId>
+   	</dependency>
    </dependencies>
 </project>
