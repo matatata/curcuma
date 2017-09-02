@@ -1,0 +1,156 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>curcuma</groupId>
+	<artifactId>parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<aspectj.version>1.8.10</aspectj.version>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<java.source-target.version>1.6</java.source-target.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.8</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>CurcumaCore</module>
+		<module>CurcumaCoreAPI</module>
+		<module>CurcumaKeyValueCoding</module>
+		<module>CurcumaKeyValueCodingAPI</module>
+		<module>CurcumaKeyValueObservingAPI</module>
+		<module>CurcumaKeyValueObserving</module>
+		<module>CurcumaKeyValueBindingAPI</module>
+		<module>CurcumaKeyValueBinding</module>
+		<module>CurcumaFoundationAPI</module>
+		<module>CurcumaFoundation</module>
+	</modules>
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>curcuma</groupId>
+				<artifactId>CurcumaCore</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>curcuma</groupId>
+				<artifactId>CurcumaCoreAPI</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>curcuma</groupId>
+				<artifactId>CurcumaKeyValueCoding</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>curcuma</groupId>
+				<artifactId>CurcumaKeyValueCodingAPI</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>curcuma</groupId>
+				<artifactId>CurcumaKeyValueObservingAPI</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>curcuma</groupId>
+				<artifactId>CurcumaKeyValueObserving</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>curcuma</groupId>
+				<artifactId>CurcumaKeyValueBindingAPI</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>curcuma</groupId>
+				<artifactId>CurcumaKeyValueBinding</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<source>${java.source-target.version}</source>
+					<target>${java.source-target.version}</target>
+					<!-- IMPORTANT -->
+					<useIncrementalCompilation>false</useIncrementalCompilation>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId>
+				<version>1.9</version>
+				<configuration>
+					<!--<showWeaveInfo>true</showWeaveInfo> -->
+					<source>${java.source-target.version}</source>
+					<target>${java.source-target.version}</target>
+					<Xlint>ignore</Xlint>
+					<complianceLevel>${java.source-target.version}</complianceLevel>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<!--<verbose>true</verbose> -->
+					<!--<warn>constructorName,packageDefaultMethod,deprecation,maskedCatchBlocks,unusedLocals,unusedArguments,unusedImport</warn> -->
+				</configuration>
+				<executions>
+					<execution>
+						<!-- IMPORTANT -->
+						<phase>process-sources</phase>
+						<goals>
+							<goal>compile</goal>
+							<goal>test-compile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjtools</artifactId>
+						<version>${aspectj.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

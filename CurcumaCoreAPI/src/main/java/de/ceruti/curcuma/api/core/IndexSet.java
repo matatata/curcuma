@@ -1,0 +1,80 @@
+/*
+This file is part of Curcuma.
+
+Copyright (c) Matteo Ceruti 2009
+
+Curcuma is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Curcuma is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Curcuma.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+package de.ceruti.curcuma.api.core;
+
+import java.util.Iterator;
+
+
+
+public interface IndexSet extends Iterable<Integer> {
+
+	static int NotFound = -1;
+	
+	/**
+	 * 
+	 * @param index
+	 * @return {@link #NotFound} on failure
+	 */
+	int indexGreaterOrEqualThan(int index);
+
+	/**
+	 * 
+	 * @param index
+	 * @return {@link #NotFound} on failure
+	 */
+	int indexLessOrEqualThan(int index);
+
+	/**
+	 * 
+	 * @param index
+	 * @return {@link #NotFound} on failure
+	 */
+	int indexGreaterThan(int index);
+
+	/**
+	 * 
+	 * @param index
+	 * @return {@link #NotFound} on failure
+	 */
+	int indexLessThan(int index);
+
+	int lastIndex();
+
+	int firstIndex();
+
+	@Override
+	Iterator<Integer> iterator();
+
+	boolean isEmpty();
+
+	Iterator<Range> rangesIterator();
+
+	
+	boolean isContiguous();
+	
+	boolean isMutable();
+
+	MutableIndexSet mutableIndexSet();
+	
+	IndexSet immutableIndexSet();
+
+
+}
