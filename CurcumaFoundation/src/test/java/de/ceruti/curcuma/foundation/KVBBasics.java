@@ -1,13 +1,9 @@
 package de.ceruti.curcuma.foundation;
 
 import junit.framework.TestCase;
-import de.ceruti.curcuma.foundation.Logging;
 
 public class KVBBasics extends TestCase {
 
-	static {
-		Logging.init();
-	}
 	
 	public static class KVBEmployee extends Employee {
 		public KVBEmployee(){

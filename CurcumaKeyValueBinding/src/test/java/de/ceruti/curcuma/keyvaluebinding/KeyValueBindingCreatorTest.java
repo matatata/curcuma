@@ -43,8 +43,9 @@ public class KeyValueBindingCreatorTest {
 			exposeBinding("name",String.class);
 		}
 		
+		// FIXME we should not need to declare this
 		public List mutableArrayValueForKey(String key) {
-			return new KVCMutableArrayProxy((KeyValueCoding) this,key);
+			throw new UnsupportedOperationException();
 		}
 
 	}
@@ -53,10 +54,12 @@ public class KeyValueBindingCreatorTest {
 	public void testBinding() {
 		Bean bean1 = new Bean();
 		Bean bean2 = new Bean();
+		
 		//bind bean2's name to bean1's name
 		bean2.bind("name", bean1, "name", new DefaultBindingOptions());
 		
 		bean1.setName("Tom");
+		// bean2 now reflects this change as well
 		assertEquals("Tom",bean2.getName());
 		
 		

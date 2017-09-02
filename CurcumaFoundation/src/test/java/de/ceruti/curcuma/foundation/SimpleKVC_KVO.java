@@ -9,10 +9,10 @@ public class SimpleKVC_KVO extends TestCase {
 	
 	public void test_getters_and_setters() {
 		Employee employee = new Employee();
+		employee.setName("No Name");
 		employee.addObserver(new LoggingObserver("desc"), "description", null, KVOOption.KeyValueObservingOptionNew);
 		
 		
-		employee.setName("Matteo Ceruti");
 		assertEquals(employee.getName(), employee.getValueForKey("name"));
 		employee.setValueForKey("John Doe", "name");
 		assertEquals("John Doe", employee.getName());

@@ -22,20 +22,15 @@ package de.ceruti.curcuma.foundation;
 
 import java.util.ArrayList;
 
-import junit.framework.TestCase;
 import de.ceruti.curcuma.api.keyvalueobserving.KVOEvent;
 import de.ceruti.curcuma.api.keyvalueobserving.KVOOption;
 import de.ceruti.curcuma.api.keyvalueobserving.KVObserver;
-import de.ceruti.curcuma.foundation.Logging;
 import de.ceruti.curcuma.keyvalueobserving.util.RecordingObserver;
+import junit.framework.TestCase;
 
 
 public class KVO extends TestCase {
 	
-	static {
-	
-		Logging.init();
-	}
 	public void testSimpleKVO() {
 		ArrayList<KVOEvent> recordings = new ArrayList<KVOEvent>();
 		
@@ -129,30 +124,6 @@ public class KVO extends TestCase {
 		m.removeObserver(obs, "x");
 		assertFalse(m.hasObservers());
 		
-//		// OldNew Compare
-//		
-//		m.addObserver(obs, "x", null, KVOOption.KeyValueObservingOptionOld | KVOOption.KeyValueObservingOptionNew);
-//		
-//		oldX = m.getX();
-//		newX=new X();
-//		//a
-//		m.setX(newX);
-//		assertEquals(1,recordings.size());
-//		e = recordings.remove(0);
-//		assertEquals(KVOEvent.KEY_VALUE_CHANGE_SETTING, e.getKind());
-//		assertFalse(e.isPriorEvent());
-//		assertTrue(e.hasNewValue());
-//		assertEquals(newX, e.getNewValue());
-//		assertTrue(e.hasOldValue());
-//		assertEquals(oldX, e.getOldValue());
-//		assertFalse(oldX.equals(newX));
-//		
-//		//b
-//		oldX=m.getX();
-//		m.setX(newX); //this is not new!
-//		assertEquals(0,recordings.size()); //expect no event
-//		m.removeObserver(obs, "x");
-//		assertFalse(m.hasObservers());
 		
 	}
 	
