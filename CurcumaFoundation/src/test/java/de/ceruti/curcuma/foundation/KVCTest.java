@@ -23,11 +23,10 @@ package de.ceruti.curcuma.foundation;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
 import de.ceruti.curcuma.api.keyvaluecoding.KeyValueCoding;
 import de.ceruti.curcuma.api.keyvalueobserving.KVOOption;
-import de.ceruti.curcuma.foundation.Logging;
 import de.ceruti.curcuma.keyvalueobserving.util.LoggingObserver;
+import junit.framework.TestCase;
 
 
 public class KVCTest extends TestCase
@@ -35,7 +34,6 @@ public class KVCTest extends TestCase
 
 	public void test1() {
 		
-		Logging.init();
 		
 		Mailbox mbox = new Mailbox();
 		mbox.addObserver(new LoggingObserver("mails"), "mails", null, KVOOption.KeyValueObservingOptionNew | KVOOption.KeyValueObservingOptionNone);

@@ -49,6 +49,7 @@
 		<module>CurcumaAppKit</module>
 		<module>CurcumaAppKitViewsAPI</module>
 		<module>CurcumaAppKitViews</module>
+		<module>CurcumaWidgetPlugIns</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -138,6 +139,12 @@
 				<artifactId>CurcumaAppKitViews</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>curcuma</groupId>
+				<artifactId>CurcumaWidgetPlugIns</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
 			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>

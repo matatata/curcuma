@@ -5,21 +5,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import junit.framework.TestCase;
 import de.ceruti.curcuma.api.keyvalueobserving.KVOEvent;
 import de.ceruti.curcuma.api.keyvalueobserving.KVOOption;
-import de.ceruti.curcuma.foundation.NSObjectImpl;
-import de.ceruti.curcuma.foundation.Logging;
-import de.ceruti.curcuma.foundation.ObservableArray;
 import de.ceruti.curcuma.keyvalueobserving.PostKVONotifications;
 import de.ceruti.curcuma.keyvalueobserving.util.LoggingObserver;
 import de.ceruti.curcuma.keyvalueobserving.util.RecordingObserver;
+import junit.framework.TestCase;
 
 public class ObservableArrayTest extends TestCase {
 
-	static {
-		Logging.init();
-	}
 	
 	public static class Test extends NSObjectImpl {
 		List<Employee> employees = new ArrayList<Employee>();

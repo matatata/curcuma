@@ -1,23 +1,13 @@
 package de.ceruti.curcuma.foundation;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.List;
 
-import junit.framework.TestCase;
 import de.ceruti.curcuma.api.keyvalueobserving.KVOEvent;
 import de.ceruti.curcuma.api.keyvalueobserving.KVOOption;
-import de.ceruti.curcuma.api.keyvalueobserving.KeyValueObserving;
-import de.ceruti.curcuma.foundation.Logging;
-import de.ceruti.curcuma.keyvalueobserving.util.LoggingObserver;
 import de.ceruti.curcuma.keyvalueobserving.util.RecordingObserver;
+import junit.framework.TestCase;
 
 public class KVOTest extends TestCase {
-//	static {
-//		Logging.init();
-//	}
-//	
 	
 	ArrayList<KVOEvent> recordings = new ArrayList<KVOEvent>();
 	

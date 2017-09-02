@@ -3,20 +3,15 @@ package de.ceruti.curcuma.foundation;
 import java.util.HashMap;
 import java.util.Map;
 
-import junit.framework.TestCase;
 import de.ceruti.curcuma.api.foundation.NSDictionary;
 import de.ceruti.curcuma.api.keyvaluecoding.KeyValueCoding;
 import de.ceruti.curcuma.api.keyvalueobserving.KVOOption;
-import de.ceruti.curcuma.foundation.Logging;
-import de.ceruti.curcuma.foundation.NSFactory;
 import de.ceruti.curcuma.keyvaluecoding.KeyValueCodingWrapper;
 import de.ceruti.curcuma.keyvalueobserving.util.LoggingObserver;
+import junit.framework.TestCase;
 
 public class Dictionary extends TestCase {
 	
-	static {
-		Logging.init();
-	}
 	
 	public void test01() {
 		NSDictionary dict = NSFactory.mutableDictionary();

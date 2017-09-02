@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>CurcumaWidgetPlugIns</artifactId>
+	<parent>
+		<groupId>curcuma</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId>
+				<configuration>
+					<aspectLibraries>
+						<aspectLibrary>
+							<groupId>curcuma</groupId>
+							<artifactId>CurcumaKeyValueCoding</artifactId>
+						</aspectLibrary>
+						<aspectLibrary>
+							<groupId>curcuma</groupId>
+							<artifactId>CurcumaKeyValueObserving</artifactId>
+						</aspectLibrary>
+						<aspectLibrary>
+							<groupId>curcuma</groupId>
+							<artifactId>CurcumaKeyValueBinding</artifactId>
+						</aspectLibrary>
+						<aspectLibrary>
+							<groupId>curcuma</groupId>
+							<artifactId>CurcumaFoundation</artifactId>
+						</aspectLibrary>
+						<aspectLibrary>
+							<groupId>curcuma</groupId>
+							<artifactId>CurcumaAppKit</artifactId>
+						</aspectLibrary>
+					</aspectLibraries>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>curcuma</groupId>
+			<artifactId>CurcumaAppKitViews</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>net.java.balloontip</groupId>
+		    <artifactId>balloontip</artifactId>
+		    <version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>curcuma</groupId>
+			<artifactId>CurcumaFoundation</artifactId>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+		
+		
+		<dependency>
+		    <groupId>com.miglayout</groupId>
+		    <artifactId>miglayout</artifactId>
+		    <version>3.7</version>
+		    <scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
