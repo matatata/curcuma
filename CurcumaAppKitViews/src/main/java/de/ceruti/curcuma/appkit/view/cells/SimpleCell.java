@@ -14,25 +14,11 @@ public class SimpleCell extends AbstractCellBase implements NSEditorCell {
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * de.ceruti.curcuma.api.appkit.view.cells.NSEditorCell#editorDidEndEditing
-	 * (de.ceruti.curcuma.api.appkit.NSEditor)
-	 */
 	@Override
 	public void editorDidEndEditing(NSEditor editor) {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * de.ceruti.curcuma.api.appkit.view.cells.NSEditorCell#editorDidStartEditing
-	 * (de.ceruti.curcuma.api.appkit.NSEditor)
-	 */
 	@Override
 	public void editorDidStartEditing(NSEditor editor) {
 	}

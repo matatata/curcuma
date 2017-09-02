@@ -112,7 +112,6 @@ public class NSControlBase extends NSViewBase implements NSControl, NSDefaultPla
 		
 		public ControlValueBinder(KeyValueCoding kvc) {
 			super(kvc);
-			// TODO Auto-generated constructor stub
 		}
 
 		
@@ -201,7 +200,6 @@ public class NSControlBase extends NSViewBase implements NSControl, NSDefaultPla
 			}
 			
 			if (isMarkerState() != null 
-//					&& ObjectUtils.equals(invalidValue, controlValue)
 					) {
 				logger.debug("cell should accept marker " + isMarkerState()
 						+ " (display)");
@@ -275,11 +273,6 @@ public class NSControlBase extends NSViewBase implements NSControl, NSDefaultPla
 			logger.debug("cellDidPerformAction()");
 		}
 
-		/*
-		 * previously this was not called.
-		 * (non-Javadoc)
-		 * @see de.ceruti.curcuma.api.appkit.view.cells.NSCell.Delegate#validateCellValue(java.lang.Object)
-		 */
 		@Override
 		public Object cellValidateCellValue(NSCell sender, Object c) throws ValidationException {
 			if(sender != getCell()) {
@@ -287,25 +280,6 @@ public class NSControlBase extends NSViewBase implements NSControl, NSDefaultPla
 				logger.warn("unknown sender " + sender);
 			}
 			
-//			//NEW!
-//			if(c instanceof NSSelectionMarker)
-//				throw new ValidationException();
-//			
-//			if(!isValidateAgainstModel())
-//				return c;
-//			
-//			try {
-//				return validateSubject(c,ControlValueBinding);
-//			} 
-//			catch (ValidationException e) {
-//				throw e;
-//			} catch (KeyValueBindingSyncException e) {
-//				// logger.error(e);
-//				// return c;
-//				throw new KeyValueBindingException(e);
-//			}
-			
-//			return validateControlValue(c);
 			return c;
 		}
 		
@@ -368,33 +342,16 @@ public class NSControlBase extends NSViewBase implements NSControl, NSDefaultPla
 	 */
 	protected final void updateCellValue() {
 		Object val = getControlValue();
-//		try {
-//			val = getCell().validateCellValue(val);
 			getCell().setCellValue(val);
-//		} catch (ValidationException e) {
-//			if(cellDidNotAcceptValue(val, e.getMessage()))
-//				getCell().setCellValue(val); //set it anyway
-//			else {
-//				logger.error(e);
-//			}
-//		}
 		
 	}
 	
 
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.api.appkit.view.NSControl#isEditable()
-	 */
 	@Override
 	public boolean isEditable() {
 		return getCell().isEditable();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.api.appkit.view.NSControl#setEditable(boolean)
-	 */
 	@Override
 	public void setEditable(boolean b) {
 		getCell().setEditable(b);
@@ -484,13 +441,6 @@ public class NSControlBase extends NSViewBase implements NSControl, NSDefaultPla
 		return super.createBinderForBinding(binding,observedObject);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @seede.ceruti.curcuma.api.appkit.NSPlaceholders#
-	 * getDefaultPlaceholderForMarkerWithBinding
-	 * (de.ceruti.curcuma.api.appkit.NSSelectionMarker, java.lang.String)
-	 */
 	@Override
 	public Object getDefaultPlaceholderForMarkerWithBinding(
 			NSSelectionMarker marker, String binding) {
@@ -498,13 +448,6 @@ public class NSControlBase extends NSViewBase implements NSControl, NSDefaultPla
 				binding);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @seede.ceruti.curcuma.api.appkit.NSPlaceholders#
-	 * setDefaultPlaceholderForMarkerWithBinding(java.lang.Object,
-	 * de.ceruti.curcuma.api.appkit.NSSelectionMarker, java.lang.String)
-	 */
 	@Override
 	public void setDefaultPlaceholderForMarkerWithBinding(Object placeholder,
 			NSSelectionMarker marker, String binding) {

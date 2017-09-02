@@ -60,17 +60,11 @@ public final class NSTextFieldCell extends NSActionCellImpl implements TextField
 		return false;
 	}
 	
-//	private boolean nseditorIsEditing = false;
-//	
-//	protected boolean isEditing() {
-//		return nseditorIsEditing;
-//	}
 	
 	
 	Object origBGColor;
 	@Override
 	public void editorDidEndEditing(NSEditor editor) {
-//		nseditorIsEditing = false;
 		
 		if(origBGColor!=null)
 		{
@@ -87,19 +81,11 @@ public final class NSTextFieldCell extends NSActionCellImpl implements TextField
 		}
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.api.appkit.view.NSText#textBeginEditing()
-	 */
 	@Override
 	public final void textBeginEditing(){
 		getTextWidgetPlugIn().textBeginEditing();
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.api.appkit.view.NSText#textEndEditing()
-	 */
 	@Override
 	public final void textEndEditing(){
 		getTextWidgetPlugIn().textEndEditing();
@@ -115,20 +101,11 @@ public final class NSTextFieldCell extends NSActionCellImpl implements TextField
 	
 	
 
-	
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.appkit.view.EditorWidgetPlugin.Delegate#plugInDidBeginEditing(de.ceruti.curcuma.appkit.view.EditorWidgetPlugin)
-	 */
 	@Override
 	public final void plugInDidBeginEditing(EditorWidgetPlugin sender) {
 		getEditorDelegate().cellDidBeginEditing(this);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.api.appkit.view.NSText.Delegate#textDidBeginEditing(de.ceruti.curcuma.api.appkit.view.NSText)
-	 */
 	@Override
 	public final void textDidBeginEditing(NSText editor) {
 		// hasFocus = true;

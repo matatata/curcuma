@@ -20,14 +20,6 @@ public class NSTextFieldImpl extends NSEditingControl implements NSTextField {
 	public NSTextFieldImpl() {
 		super();
 		exposeBinding(TextValueBinding,String.class);
-//		addObserver(new Observer<NSEditorEvent>() {
-//			public void handleEvent(NSEditorEvent e) {
-//				if(e.getType()==NSEditorEvent.Type.DISCARD){
-//					if(getCell() instanceof NSText)
-//						clearTextIfMarker((NSText) getCell());
-//				}
-//			}
-//		});
 	}
 	
 	@Override
@@ -71,15 +63,6 @@ public class NSTextFieldImpl extends NSEditingControl implements NSTextField {
 		public NSCellDelegate() {
 		}
 
-//		@Override
-//		public boolean cellValueDidChange(NSCell sender) {
-//			boolean ret = super.cellValueDidChange(sender);
-//			if(isContinuousCommit()){
-//				boolean ret2 = commitEditing();
-//			}
-//			//TODO what Todo about ret2?
-//			return ret /* && ret2*/;
-//		}
 
 		@Override
 		public void textDidChange(NSText sender) {
@@ -98,9 +81,6 @@ public class NSTextFieldImpl extends NSEditingControl implements NSTextField {
 		@Override
 		public void textDidBeginEditing(NSText editor) {
 			logger.debug("textDidBeginEditing()");
-//			startEditing();
-			//will be called by NSEditingControl.NSCellDelegate.cellDidBeginEditing
-			//
 			
 		}
 		
@@ -133,8 +113,6 @@ public class NSTextFieldImpl extends NSEditingControl implements NSTextField {
 			return true;
 		}
 
-		
-//		private boolean isNotifying = false;
 		
 		@Override
 		public boolean textShouldEndEditing(NSText editor) {
@@ -176,15 +154,6 @@ public class NSTextFieldImpl extends NSEditingControl implements NSTextField {
 		return text;
 	}
 
-//	private boolean continuousCommit = false;
-//	
-//	public boolean isContinuousCommit() {
-//		return continuousCommit;
-//	}
-//	
-//	public void setContinuousCommit(boolean c) {
-//		continuousCommit = c;
-//	}
 	
 
 	

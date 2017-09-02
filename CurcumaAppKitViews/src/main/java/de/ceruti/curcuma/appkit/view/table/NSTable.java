@@ -408,13 +408,6 @@ public class NSTable extends NSViewBase implements NSTableView {
 		defaultEditors.put(clazz, cell);
 	}
 	
-//	public void cellDidEndEditing(NSEditor ed, int row, NSTableColumn col) {
-//		ed.setEditingSubject(null);
-//	}
-//
-//	public void cellDidStartEditing(NSEditor ed, int row, NSTableColumn col) {
-//		ed.setEditingSubject(getEditingSubject());
-//	}
 
 	private NSEditable editingSubject;
 	

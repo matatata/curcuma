@@ -237,10 +237,6 @@ public class NSTableCol extends NSObjectImpl implements NSTableColumn {
 			return newSubjectValue;
 		}
 		
-		/*
-		 * (non-Javadoc)
-		 * @see de.ceruti.curcuma.api.appkit.view.table.TableColumnDataSource#setObject(java.lang.Object, int, de.ceruti.curcuma.api.appkit.view.table.NSTableView)
-		 */
 		@Override
 		public void setObject(Object o, int row, NSTableView sender) {
 			if(isContentValues)
@@ -253,10 +249,6 @@ public class NSTableCol extends NSObjectImpl implements NSTableColumn {
 			info.exitUpdatingSubject();
 		}
 		
-		/*
-		 * (non-Javadoc)
-		 * @see de.ceruti.curcuma.api.appkit.view.table.TableColumnDataSource#validateObject(java.lang.Object, int, de.ceruti.curcuma.api.appkit.view.table.NSTableView)
-		 */
 		@Override
 		public Object validateObject(Object o, int row, NSTableView sender) throws ValidationException {
 			if(isContentValues)
@@ -267,10 +259,6 @@ public class NSTableCol extends NSObjectImpl implements NSTableColumn {
 			return ((KeyValueCoding)obj).validateValueForKeyPath(o,info.modelKeypath);
 		}
 		
-		/*
-		 * (non-Javadoc)
-		 * @see de.ceruti.curcuma.api.appkit.view.table.TableColumnDataSource#getObject(int, de.ceruti.curcuma.api.appkit.view.table.NSTableView)
-		 */
 		@Override
 		public Object getObject(int row, NSTableView sender) {
 			Object obj = info.getObservedObject();
@@ -281,44 +269,12 @@ public class NSTableCol extends NSObjectImpl implements NSTableColumn {
 			return ((KeyValueCoding)obj).getValueForKeyPath(info.modelKeypath);
 		}
 		
-		/*
-		 * (non-Javadoc)
-		 * @see de.ceruti.curcuma.api.appkit.view.table.TableColumnDataSource#getColumnClass()
-		 */
 		@Override
 		public Class<?> getColumnClass() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 	}
 
-
-//	public Object getBoundObjectAtRow(int row) {
-//		MyBindingInfoImpl binfo = (MyBindingInfoImpl) getInfoForBinding(ValueBinding);
-//		if(binfo!=null){
-//			Object obj = binfo.getObservedObject();
-//			obj = ((KeyValueCoding)obj).getValueForKey(binfo.controllerKey);
-//			obj = ((List)obj).get(row);
-//			return ((KeyValueCoding)obj).getValueForKeyPath(binfo.modelKeypath);
-//		}
-//		
-//		return null;
-//	}
-//	
-//	public void setBoundObjectAtRow(Object o, int row) {
-//		MyBindingInfoImpl binfo = (MyBindingInfoImpl) getInfoForBinding(ValueBinding);
-//		if(binfo!=null){
-//			binfo.enterUpdatingSubject();
-//			Object obj = binfo.getObservedObject();
-//			obj = ((KeyValueCoding)obj).getValueForKey(binfo.controllerKey);
-//			obj = ((List)obj).get(row);
-//			((KeyValueCoding)obj).setValueForKeyPath(o,binfo.modelKeypath);
-//			binfo.exitUpdatingSubject();
-//			return;
-//		}
-//	
-//		
-//	}
 	
 	private TableColumnDataSource contentValuesDS;
 	private TableColumnDataSource contentDS;

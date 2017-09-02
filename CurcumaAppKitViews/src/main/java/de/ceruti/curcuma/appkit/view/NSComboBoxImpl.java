@@ -15,32 +15,6 @@ public class NSComboBoxImpl extends NSTextFieldImpl implements NSComboBox {
 			implements NSComboCell.Delegate
 			{
 		
-//		public boolean hasValidCellValue(boolean cellState) {
-//			
-//			return false;
-//		}
-
-//		public void textDidBeginEditing(NSText sender) {
-//			
-//		}
-//
-//		public void textDidChange(NSText sender) {
-//		}
-//
-//		public void textDidEndEditing(NSText sender) {
-//		}
-//
-//		public void textReceivedFocus(NSText sender) {
-//		}
-//
-//		public boolean textShouldBeginEditing(NSText sender) {
-//			return true;
-//		}
-//
-//		public boolean textShouldEndEditing(NSText sender) {
-//			return isMarkerState()!=null || ((NSCell)sender).getCellState().hasValidCellValue();
-//		}
-//		
 		
 	}
 	

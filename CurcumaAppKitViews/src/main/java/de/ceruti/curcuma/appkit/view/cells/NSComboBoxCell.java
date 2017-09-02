@@ -505,9 +505,6 @@ public class NSComboBoxCell extends NSActionCellImpl implements NSComboCell,
 
 		@Override
 		public void cellDidPerformAction(NSActionCell sender) {
-//			setDisplayValue(((NSCell)sender).getDisplayValue());
-//			updateCellValue();
-			
 			getActionDelegate().cellDidPerformAction(NSComboBoxCell.this);
 		}
 

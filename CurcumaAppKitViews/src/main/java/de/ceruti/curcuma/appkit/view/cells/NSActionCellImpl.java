@@ -28,33 +28,17 @@ public class NSActionCellImpl extends AbstractCellBase implements
 		return NSActionCell.Delegate.Dummy.INSTANCE;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.appkit.view.ActionControlWidgetPlugin.Notifications#pluginDidPerformAction(de.ceruti.curcuma.appkit.view.ActionControlWidgetPlugin)
-	 */
 	@Override
 	public void pluginDidPerformAction(ActionControlWidgetPlugin sender) {
 		logger.debug("pluginDidPerformAction()");
 		getActionDelegate().cellDidPerformAction(this);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.appkit.view.ActionControlWidgetPlugin.Notifications#pluginShouldPerformAction(de.ceruti.curcuma.appkit.view.ActionControlWidgetPlugin)
-	 */
 	@Override
 	public final boolean pluginShouldPerformAction(ActionControlWidgetPlugin sender) {
 		return getActionDelegate().cellShouldPerformAction(this);
 	}
 
-	
-	
-//	public NSBoundedRangeCell.Delegate getBoundedRangeCellDelegate() {
-//		Object del = getDelegate();
-//		if(del!=null && del instanceof NSBoundedRangeCell.Delegate)
-//			return (NSBoundedRangeCell.Delegate)del;
-//		return NSBoundedRangeCell.Delegate.Dummy.INSTANCE;
-//	}
 	
 	private Object[] cellValueRange = new Object[]{UNBOUNDED,UNBOUNDED};
 	private int resolution = -1;
@@ -80,10 +64,6 @@ public class NSActionCellImpl extends AbstractCellBase implements
 			setCellValueRange(range);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.appkit.view.cells.BoundedRangeWidgetPlugin.Delegate#getTransformer()
-	 */
 	@Override
 	public ValueTransformer getBoundedRangeTransformer() {
 		return def;

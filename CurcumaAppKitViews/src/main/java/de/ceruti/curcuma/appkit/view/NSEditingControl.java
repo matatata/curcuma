@@ -121,8 +121,6 @@ private static Category logger = Logger.getInstance(NSEditingControl.class);
 			success = false;
 		}
 		
-		//TODO this Editor-Stuff seems to be still all shitty
-		//MCE 10.12.2009 There had been changes... is this still necessary?
 //		This might be not complete
 		if(success){
 			//Assume subject accepted controlvalue so we must not fetch it from the subject, but remove the marker state

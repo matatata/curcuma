@@ -78,19 +78,11 @@ public abstract class AbstractCellBase extends NSObjectImpl implements NSCell,
 		return getWidgetPlugIn().isVisible();
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.api.appkit.view.cells.NSCell#hasFocus()
-	 */
 	@Override
 	public final boolean hasFocus() {
 		return getWidgetPlugIn().hasFocus();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.api.appkit.view.cells.NSCell#requestFocus()
-	 */
 	@Override
 	public final void requestFocus() {
 		getWidgetPlugIn().requestFocus();
@@ -184,10 +176,6 @@ public abstract class AbstractCellBase extends NSObjectImpl implements NSCell,
 		return true;
 	}
 
-//	public final Delegate getDelegate() {
-//		return delegate;
-//	}
-	
 	@Override
 	public final void setDelegate(NSCell.Delegate d) {
 		this.delegate = d;
@@ -267,20 +255,6 @@ public abstract class AbstractCellBase extends NSObjectImpl implements NSCell,
 		return cellValue;
 	}
 
-//	public final void setMarkerValue(Object v){
-//		this.cellValue = v;
-//		setMarkerState(true);
-//	}
-
-	
-//	/**
-//	 * Try to update the cell value by taking the value from the gui
-//	 * @throws ValidationException TODO
-//	 */
-//	protected final void updateCellValue(Object val) throws ValidationException {
-//		_setCellValue(val);
-//		getDelegate().cellValueDidChange(this);
-//	}
 	
 	
 	protected Object display2cellValue(Object d) throws ValidationException {
@@ -291,18 +265,12 @@ public abstract class AbstractCellBase extends NSObjectImpl implements NSCell,
 		return c;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.api.appkit.view.NSCell#updateCellValue()
-	 */
 	@Override
 	public final boolean updateCellValue() {
 		validCellValue=false;
 		try {
 			Object c = display2cellValue(getDisplayValue());
 			_setCellValue(c);
-//			if(notifyDelegate)
-//				getDelegate().cellValueDidChangeViaGUI(this);
 		} catch (ValidationException e) {
 			logger.debug(e);
 			validationFailureMessage = e.getMessage();
@@ -315,11 +283,6 @@ public abstract class AbstractCellBase extends NSObjectImpl implements NSCell,
 	}
 	
 
-	
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.api.appkit.view.cells.NSCell#setCellValue(java.lang.Object)
-	 */
 	@Override
 	public final void setCellValue(Object cellValue) {
 		try {
@@ -415,19 +378,11 @@ public abstract class AbstractCellBase extends NSObjectImpl implements NSCell,
 	}
 
 	
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.api.appkit.view.NSCell#isEditable()
-	 */
 	@Override
 	public final boolean isEditable() {
 		return getWidgetPlugIn().isEditable();
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see de.ceruti.curcuma.api.appkit.view.NSCell#setEditable(boolean)
-	 */
 	@Override
 	public final void setEditable(boolean e) {
 		getWidgetPlugIn().setEditable(e);
@@ -456,21 +411,6 @@ public abstract class AbstractCellBase extends NSObjectImpl implements NSCell,
 		}
 		
 		
-		
-//		if(!isDirty()){
-//			return !(getCellValue() instanceof NSSelectionMarker);
-//		}
-//		
-//		try {
-//			Object newValue = validateCellValue(getWidgetPlugIn().getPlugInValue());
-//			newValue = getNSCellDelegate().validateCellValue(newValue);
-//			return true;
-//		} catch (ValidationException e) {
-//			if (errMessage != null)
-//				errMessage.append(e.getMessage());
-//			logger.warn(e);
-//			return false;
-//		}
 	}
 	
 	
