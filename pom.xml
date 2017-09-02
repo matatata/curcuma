@@ -50,6 +50,7 @@
 		<module>CurcumaAppKitViewsAPI</module>
 		<module>CurcumaAppKitViews</module>
 		<module>CurcumaWidgetPlugIns</module>
+		<module>CurcumaExamples</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>

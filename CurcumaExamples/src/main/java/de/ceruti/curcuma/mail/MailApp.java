@@ -38,7 +38,7 @@ import de.ceruti.curcuma.appkit.widgets.swing.PlugInFactory;
 import de.ceruti.curcuma.keyvaluebinding.DefaultBindingOptions;
 import net.miginfocom.swing.MigLayout;
 
-public class Main {
+public class MailApp {
 	private static JFrame frame;
 	private static JTable resourceTable;
 	private static JTable privsTable;

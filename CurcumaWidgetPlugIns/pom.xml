@@ -50,19 +50,7 @@
 		    <artifactId>balloontip</artifactId>
 		    <version>1.0</version>
 		</dependency>
-		<dependency>
-			<groupId>curcuma</groupId>
-			<artifactId>CurcumaFoundation</artifactId>
-			<type>test-jar</type>
-			<scope>test</scope>
-		</dependency>
 		
 		
-		<dependency>
-		    <groupId>com.miglayout</groupId>
-		    <artifactId>miglayout</artifactId>
-		    <version>3.7</version>
-		    <scope>test</scope>
-		</dependency>
 	</dependencies>
 </project>

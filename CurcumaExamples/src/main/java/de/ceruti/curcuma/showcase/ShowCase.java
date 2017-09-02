@@ -1,4 +1,4 @@
-package de.ceruti.curcuma.example.showcase;
+package de.ceruti.curcuma.showcase;
 
 
 import java.awt.Color;

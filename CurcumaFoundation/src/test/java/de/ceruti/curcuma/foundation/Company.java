@@ -52,13 +52,13 @@ public class Company extends NSObjectImpl {
 	public static Company createSampleCompany() {
 		Company c = new Company();
 		Employee e = new Employee();
-		e.setName("Steve Jobs");
+		e.setName("Max Mustermann");
 		c.setCeo(e);
 		e = new Employee();
-		e.setName("Matteo Ceruti");
+		e.setName("Miriam Musterfrau");
 		c.getEmployees().add(e);
 		e = new Employee();
-		e.setName("Steve Wozniak");
+		e.setName("John Doe");
 		c.getEmployees().add(e);
 		return c;
 	}
@@ -72,7 +72,7 @@ public class Company extends NSObjectImpl {
 		e.setName("Steve Balmer");
 		c.getEmployees().add(e);
 		e = new Employee();
-		e.setName("Developer Developer");
+		e.setName("Larry Page");
 		c.getEmployees().add(e);
 		return c;
 	}
