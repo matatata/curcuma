@@ -11,7 +11,7 @@ import java.util.List;
 import de.ceruti.curcuma.api.keyvalueobserving.KVOEvent;
 import de.ceruti.curcuma.api.keyvalueobserving.KeyValueObserving;
 
-public class RecordingObserver  extends LoggingObserver {
+public class RecordingObserver extends LoggingObserver {
 
 	private List<KVOEvent> evts;
 

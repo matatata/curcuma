@@ -206,10 +206,7 @@ public class ObservableArray extends AbstractObservableArray {
 			
 			switch (change.getKind()) {
 				case KVOEvent.KEY_VALUE_CHANGE_SETTING:
-					/*
-				case KVOEvent.KEY_VALUE_CHANGE_ARRAYELEM_INSERTION:
-				case KVOEvent.KEY_VALUE_CHANGE_ARRAYELEM_REMOVAL:
-				case KVOEvent.KEY_VALUE_CHANGE_ARRAYELEM_REPLACEMENT: */{
+				{
 					if (change.isPriorEvent()) {
 						
 						if ((this.options & KVOOption.KeyValueObservingOptionOld) != 0)

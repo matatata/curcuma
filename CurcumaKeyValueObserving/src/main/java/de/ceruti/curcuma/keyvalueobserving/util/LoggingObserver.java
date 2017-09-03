@@ -45,11 +45,6 @@ public class LoggingObserver implements KVObserver
 		this.writer = writer;
 	}
 	
-	static int count = 0;
-	public LoggingObserver()
-	{
-		this(String.valueOf(count++).toString());
-	}
 	
 	@Override
 	public void observeValue(String keypath, KeyValueObserving object, KVOEvent change, Object context) {

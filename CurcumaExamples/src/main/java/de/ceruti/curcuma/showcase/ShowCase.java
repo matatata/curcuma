@@ -7,8 +7,6 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -28,6 +26,8 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.text.JTextComponent;
+
+import org.apache.log4j.Category;
 
 import de.ceruti.curcuma.api.appkit.NSSelectionMarker;
 import de.ceruti.curcuma.api.appkit.controller.NSArrayFilter;
@@ -62,6 +62,8 @@ import de.ceruti.curcuma.keyvaluebinding.DefaultBindingOptions;
 @SuppressWarnings("rawtypes")
 public class ShowCase extends JFrame {
 
+	private final static Category logger = Category.getInstance(ShowCase.class);
+	
 	JTable table;
 	JButton addButton;
 	JButton removeButton;
@@ -142,11 +144,11 @@ public class ShowCase extends JFrame {
 		DefaultBindingOptions opts = new DefaultBindingOptions();
 		salaryTextField.setDefaultPlaceholderForMarkerWithBinding("<NoSelection>",
 				NSSelectionMarker.NSNoSelectionMarker,
-				NSTextFieldImpl.ControlValueBinding);
+				NSControl.ControlValueBinding);
 		opts.setCustomBindingOptionForKey("<MultipleValues>",
 				NSSelectionMarker.NSMultipleValuesMarker.getBindingOptionKey());
 		
-		salaryTextField.bind(NSTextFieldImpl.ControlValueBinding, arrayController,
+		salaryTextField.bind(NSControl.ControlValueBinding, arrayController,
 				"selection.salary", opts);
 		
 		
@@ -172,14 +174,14 @@ public class ShowCase extends JFrame {
 		DefaultBindingOptions opts = new DefaultBindingOptions();
 		salaryTextField.setDefaultPlaceholderForMarkerWithBinding("<NoSelection>",
 				NSSelectionMarker.NSNoSelectionMarker,
-				NSTextFieldImpl.ControlValueBinding);
+				NSControl.ControlValueBinding);
 		opts.setCustomBindingOptionForKey("<MultipleValues>",
 				NSSelectionMarker.NSMultipleValuesMarker.getBindingOptionKey());
 		opts.setCustomBindingOptionForKey("<Null>",
 				NSSelectionMarker.NSNullValueMarker.getBindingOptionKey());
 		
 		
-		salaryTextField.bind(NSTextFieldImpl.ControlValueBinding, arrayController,
+		salaryTextField.bind(NSControl.ControlValueBinding, arrayController,
 				"selection.boss.salary", opts);
 		
 		
@@ -205,12 +207,12 @@ public class ShowCase extends JFrame {
 		NSComboBoxImpl comboText = new NSComboBoxImpl();
 		comboText.setCell(comboCell);
 		comboText.setViewPlugIn(comboPlug);
-		comboCell.bind(comboCell.ContentBinding, arrayController,
+		comboCell.bind(NSComboCell.ContentBinding, arrayController,
 				"arrangedObjects", new DefaultBindingOptions());
-		comboCell.bind(comboCell.ContentValuesBinding, arrayController,
+		comboCell.bind(NSComboCell.ContentValuesBinding, arrayController,
 				"arrangedObjects.name", new DefaultBindingOptions());
 	
-		comboText.bind(comboText.ControlValueBinding, arrayController,
+		comboText.bind(NSControl.ControlValueBinding, arrayController,
 				"selection.boss", new DefaultBindingOptions());
 		
 		
@@ -229,9 +231,9 @@ public class ShowCase extends JFrame {
 		
 		nsText.setDefaultPlaceholderForMarkerWithBinding("<Ohne Name>",
 				NSSelectionMarker.NSNullValueMarker,
-				NSTextFieldImpl.ControlValueBinding);
+				NSControl.ControlValueBinding);
 		
-		nsText.bind(NSTextFieldImpl.ControlValueBinding, arrayController,
+		nsText.bind(NSControl.ControlValueBinding, arrayController,
 				"selection.name", new DefaultBindingOptions());
 		
 		
@@ -266,6 +268,7 @@ public class ShowCase extends JFrame {
 		addButton.addActionListener(new ActionListener() {
 			int johnCount = 0;
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				arrayController.addObject(new Employee("John Doe"
 						+ (++johnCount)));
@@ -273,6 +276,7 @@ public class ShowCase extends JFrame {
 		});
 
 		removeButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				arrayController.remove();
 
@@ -280,6 +284,7 @@ public class ShowCase extends JFrame {
 		});
 
 		aButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<Employee> em = new ArrayList<Employee>();
 				for (int i = 0; i < 400; i++) {
@@ -293,9 +298,11 @@ public class ShowCase extends JFrame {
 		filter.setPreferredSize(new Dimension(100, 19));
 		filter.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				arrayController.setFilterPredicate(new NSArrayFilter() {
 
+					@Override
 					public boolean filter(Object o) {
 						Employee e = (Employee) o;
 						if (e != null
@@ -316,9 +323,9 @@ public class ShowCase extends JFrame {
  		selectionBossComboBox.putClientProperty("JComboBox.isTableCellEditor", Boolean.TRUE);
 		
 		selectionSalaryJTextComponent = new JTextField();
-		((JTextField)selectionSalaryJTextComponent).setHorizontalAlignment(JTextField.RIGHT);
+		((JTextField)selectionSalaryJTextComponent).setHorizontalAlignment(SwingConstants.RIGHT);
 		selectionBossSalaryJTextComponent = new JTextField();
-		((JTextField)selectionBossSalaryJTextComponent).setHorizontalAlignment(JTextField.RIGHT);
+		((JTextField)selectionBossSalaryJTextComponent).setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		
 		JPanel controlsPanel = new JPanel(new GridLayout(0,4));
@@ -372,32 +379,23 @@ public class ShowCase extends JFrame {
 
 	private void initTable(){
 		
-
-		
-		table.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				   if (e.getClickCount() == 2) {
-				      JTable target = (JTable)e.getSource();
-				      int row = target.getSelectedRow();
-				      System.out.println("dblClick " + row);
-				   }
-				}
-		});
-		
 		initSalaryColumn();
 		initNameColumn();
 		initBossColumns();
 		
 		nsTable.setDelegate(new NSTableView.Delegate() {
 			
+			@Override
 			public boolean isCellEditable(int row, NSTableColumn col) {
-				return row % 2 == 0;
+				return true;
 			}
 
+			@Override
 			public boolean shouldChangeSelectionIndexes(IndexSet newSelection) {
 				return true;
 			}
 
+			@Override
 			public NSEditorCell getEditorCell(int row, int col) {
 				return null;
 			}
@@ -433,9 +431,9 @@ public class ShowCase extends JFrame {
 		simplePlug.setWidget(bossCellEditorComboBox);
 		
 		
-		funCell.bind(NSComboBoxCell.ContentBinding, arrayController,
+		funCell.bind(NSComboCell.ContentBinding, arrayController,
 				"arrangedObjects", new DefaultBindingOptions());
-		funCell.bind(NSComboBoxCell.ContentValuesBinding, arrayController,
+		funCell.bind(NSComboCell.ContentValuesBinding, arrayController,
 				"arrangedObjects.name", new DefaultBindingOptions());
 
 		
@@ -487,19 +485,19 @@ public class ShowCase extends JFrame {
 		arrayController.addObjects(company.getEmployees());
 
 		arrayController.addObserver(new KVObserver() {
+			@Override
 			public void observeValue(String keypath, KeyValueObserving object,
 					KVOEvent change, Object context) {
 				removeButton.setEnabled(arrayController.canRemove());
-				System.out.println(change);
 			}
 		},"canRemove",null,KVOOption.KeyValueObservingOptionNew);
-		
-
+				
 	}
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 
+			@Override
 			public void run() {
 				try {
 

@@ -169,25 +169,6 @@ class RangeImpl implements Range {
 		return emptyRange;
 	}
 	
-	public static void main(String[] args) {
-		Range a = new RangeImpl(4,10);
-		Range b = new RangeImpl(5,12);
-		
-		Range i = a.rangeByIntersectingRange(b);
-		System.out.println(a + " intersect " + b + "=" + i);
-		
-		Range u = a.rangeByUnioningRange(b);
-		System.out.println(a + " union " + b + "=" + u);
-		
-		Range l[] = b.rangesBySubtractingRange(a);
-		System.out.println(b + " minus " + a + "=");
-		for(Range r : l) System.out.println(r);
-		
-		b = new RangeImpl(1,10);
-		l= b.rangesBySubtractingRange(a);
-		System.out.println(b + " minus " + a + "=");
-		for(Range r : l) System.out.println(r);
-	}
 	
 	
 	@Override

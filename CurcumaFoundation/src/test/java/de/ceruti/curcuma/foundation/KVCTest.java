@@ -47,12 +47,8 @@ public class KVCTest extends TestCase
 		to.add(new Email("matteo@ceruti.de","curcuma@ceruti.de","Re:Hi there!", "Welcome back! CU tomorrow." ));
 				
 		List<String> obj = (List<String>) mbox.getValueForKeyPath("mails.from");
-		for(String from : obj) {
-			System.out.println(from);
-		}
 		ArrayList<String> actual = new ArrayList<String>();
 		for(Email m : mbox.getMails()){
-//			actual.add((String) m.getValueForKey("from"));
 			actual.add(m.getFrom());
 		}
 		assertEquals(obj, actual);

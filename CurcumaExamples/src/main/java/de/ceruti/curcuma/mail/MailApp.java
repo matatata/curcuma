@@ -189,7 +189,7 @@ public class MailApp {
 		resourceTable = new JTable();
 		privsTable = new JTable();
 		textArea = new JTextArea();
-		frame.setSize(400, 300);
+		frame.setSize(600, 400);
 		frame.getContentPane().add(new JScrollPane(resourceTable),"width 100:100:120,grow,spany");
 		frame.getContentPane().add(new JScrollPane(privsTable),"width :100:,height 80:100:150, grow, wrap");
 		frame.getContentPane().add(new JScrollPane(textArea),"grow, push");

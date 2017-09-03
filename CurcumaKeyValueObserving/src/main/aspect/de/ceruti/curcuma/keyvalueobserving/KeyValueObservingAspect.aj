@@ -498,13 +498,6 @@ aspect KeyValueObservingAspect  {
 
 	}
 	
-	public void KeyValueObservingSupport.printInfo(PrintStream pw)
-	{
-		pw.println(this.toString());
-		pw.println("observer: " + key2ObserverInfos);
-		pw.println("forwards: " + forwards);
-		pw.println("depKeysObserved: " + depKeysObserved);		
-	}
 	
 	private static class BackwardPropagator implements KVObserver {
 
