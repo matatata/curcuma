@@ -14,5 +14,5 @@ You can start a rather senseless example Swing-UI that shows most of curcumas ca
 `java -jar CurcumaExamples/target/CurcumaExamples-*-jar-with-dependencies.jar`
 
 
-# eclipse
-You should install the AspectJ m2e connector, since I use AOP via aspectj weaving
+# Eclipse
+We use AOP via aspectj compile-time-weaving. So you should install the [AJDT-Tools](http://www.eclipse.org/ajdt/downloads/index.php) *before* importing the maven projects into a workspace. When eclipse complains about a plugin lifetime not beeing covered install the Maven project configuration for Eclipse AJDT (AspectJ m2e configurator).
