@@ -15,4 +15,4 @@ You can start a rather senseless example Swing-UI that shows most of curcumas ca
 
 
 # Eclipse
-We use AOP via aspectj compile-time-weaving. So you should install the [AJDT-Tools](http://www.eclipse.org/ajdt/downloads/index.php) *before* importing the maven projects into a workspace. When eclipse complains about a plugin lifetime not beeing covered install the Maven project configuration for Eclipse AJDT (AspectJ m2e configurator).
+We use AOP via aspectj compile-time-weaving. So you should install the [AJDT-Tools](http://www.eclipse.org/ajdt/downloads/index.php) *before* importing the maven projects into a workspace. When eclipse complains about a plugin lifecycle not beeing covered install the Maven project configuration for Eclipse AJDT (AspectJ m2e configurator).
