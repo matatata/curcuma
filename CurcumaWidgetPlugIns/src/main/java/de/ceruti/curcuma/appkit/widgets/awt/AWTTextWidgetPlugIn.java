@@ -53,6 +53,7 @@ public class AWTTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
 
 	protected class MyTextListener implements TextListener {
 
+		@Override
 		public void textValueChanged(TextEvent e) {
 			System.out.println(e);
 			textHasChanged();
@@ -80,6 +81,7 @@ public class AWTTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
 	protected void setNotifyAssociationEnabled(boolean doNotify) {
 		if (doNotify) {
 			EventQueue.invokeLater(new Runnable() {
+				@Override
 				public void run() {
 					enableNotifications();
 				}
@@ -120,26 +122,32 @@ public class AWTTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
 		getWidget().setText(s);
 	}
 
+	@Override
 	public void clearSelection() {
-		((TextComponent) getWidget()).select(0, 0);
+		getWidget().select(0, 0);
 	}
 
+	@Override
 	public void selectAll() {
-		((TextComponent) getWidget()).selectAll();
+		getWidget().selectAll();
 	}
 	
+	@Override
 	public Object getBackground() {
 		return getWidget().getBackground();
 	}
 
+	@Override
 	public void setBackground(Object nat) {
 		getWidget().setBackground((Color)nat);
 	}
 	
+	@Override
 	public Object getForeground() {
 		return getWidget().getForeground();
 	}
 
+	@Override
 	public void setForeground(Object nat) {
 		getWidget().setForeground((Color)nat);
 	}

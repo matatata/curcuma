@@ -6,11 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JTable;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
@@ -50,6 +46,7 @@ public class SwingTableViewPlugIn extends AbstractTableViewPlugIn  {
 	@SuppressWarnings("serial")
 	private class MyTableModel extends AbstractTableModel {
 
+		@Override
 		public int getColumnCount() {
 			return getDelegate().getColumnCount(getView());
 		}
@@ -60,19 +57,23 @@ public class SwingTableViewPlugIn extends AbstractTableViewPlugIn  {
 			return String.valueOf(getView().getTableColumAtIndex(column).getIdentifier());
 		}
 
+		@Override
 		public int getRowCount() {
 			return getDelegate().getRowCount(getView());
 		}
 
+		@Override
 		public Object getValueAt(int rowIndex, int columnIndex) {
 			return getView().getTableColumAtIndex(columnIndex).getContentDataSource().getObject(rowIndex, getView());
 		}
 
+		@Override
 		public boolean isCellEditable(int row, int col) {
 			return getDelegate().isCellEditable(row,
 					getView().getTableColumAtIndex(col));
 		}
 
+		@Override
 		public Class<?> getColumnClass(int col) {
 			Class<?> c = getView().getTableColumAtIndex(col).getContentDataSource().getColumnClass();
 			if (c != null)
@@ -81,6 +82,7 @@ public class SwingTableViewPlugIn extends AbstractTableViewPlugIn  {
 			return super.getColumnClass(col);
 		}
 
+		@Override
 		public void setValueAt(Object value, int row, int col) {
 			logger.debug("cell val=" + value);
 			getView().getTableColumAtIndex(col).getContentDataSource().setObject(value, row, getView());
@@ -144,12 +146,14 @@ public class SwingTableViewPlugIn extends AbstractTableViewPlugIn  {
 		table = (JTable) w;
 	}
 
+	@Override
 	protected void startListeningForSelectionChanges() {
 		table.getSelectionModel().addListSelectionListener(selectionListener);
 		logger.debug("startListeningForSelectionChanges");
 		
 	}
 
+	@Override
 	protected void stopListeningForSelectionChanges() {
 		table.getSelectionModel()
 				.removeListSelectionListener(selectionListener);
@@ -157,11 +161,13 @@ public class SwingTableViewPlugIn extends AbstractTableViewPlugIn  {
 		
 	}
 
+	@Override
 	protected void breakViewConnection() {
 		table.setModel(oldModel);
 		super.breakViewConnection();
 	}
 
+	@Override
 	protected void establishViewConnection() {
 		super.establishViewConnection();
 		oldModel = table.getModel();
@@ -187,26 +193,32 @@ public class SwingTableViewPlugIn extends AbstractTableViewPlugIn  {
 
 	// /----------------TablePlugIn.Notifications----------------------
 
+	@Override
 	public void tableCellUpdated(int row, int col) {
 		tableModel.tableCellUpdated(row, col);
 	}
 
+	@Override
 	public void tableDataChanged() {
 		tableModel.tableDataChanged();
 	}
 
+	@Override
 	public void tableRowsDeleted(int first, int last, boolean updating) {
 		tableModel.tableRowsDeleted(first, last);
 	}
 
+	@Override
 	public void tableRowsUpdated(int first, int last) {
 		tableModel.tableRowsUpdated(first, last);
 	}
 
+	@Override
 	public void tableRowsInserted(int first, int last) {
 		tableModel.tableRowsInserted(first, last);
 	}
 
+	@Override
 	public void tableStructureChanged() {
 		tableModel.tableStructureChanged();
 		applyColumnSettings();
@@ -277,6 +289,7 @@ public class SwingTableViewPlugIn extends AbstractTableViewPlugIn  {
 		//What about Object.class?
 	}
 	
+	@Override
 	public NSEditorCell getDefaultEditor(Class<?> key) {
 		if(defaultEditors==null){
 			initDefaultEditors();
@@ -293,6 +306,7 @@ public class SwingTableViewPlugIn extends AbstractTableViewPlugIn  {
 		return defaultEditors.get(clazz);
 	}
 	
+	@Override
 	public void setDefaultEditor(Class<?> clazz,NSEditorCell cell){
 		if(defaultEditors==null){
 			defaultEditors = new HashMap<Class<?>,NSEditorCell>();

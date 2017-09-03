@@ -11,9 +11,6 @@ import javax.swing.JComboBox;
 import javax.swing.text.JTextComponent;
 
 import org.apache.commons.lang.ObjectUtils;
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
-
 import de.ceruti.curcuma.api.appkit.view.cells.NSEditorCell;
 import de.ceruti.curcuma.appkit.view.cells.ComboBoxCellWidgetPlugin;
 import de.ceruti.curcuma.appkit.view.cells.WidgetPlugin;
@@ -48,6 +45,7 @@ public class SwingComboBoxWidgetPlugIn extends AWTWidgetPlugIn implements
 		return getWidget().isEditable();
 	}
 	
+	@Override
 	public void setValidityStatus(boolean isValid, String reason) {
 	}
 
@@ -61,6 +59,7 @@ public class SwingComboBoxWidgetPlugIn extends AWTWidgetPlugIn implements
 		getWidget().setEnabled(e);
 	}
 	
+	@Override
 	public ComboBoxCellWidgetPlugin.Delegate getWidgetAssociation() {
 		Object assoc = super.getWidgetAssociation();
 		if (assoc instanceof ComboBoxCellWidgetPlugin.Delegate)
@@ -80,10 +79,12 @@ public class SwingComboBoxWidgetPlugIn extends AWTWidgetPlugIn implements
 		
 	}
 	
+	@Override
 	public void setSelectedIndex(int d) {
 		getWidget().setSelectedIndex(d);
 	}
 	
+	@Override
 	public int getSelectedIndex() {
 		return getWidget().getSelectedIndex();
 	}
@@ -125,10 +126,12 @@ public class SwingComboBoxWidgetPlugIn extends AWTWidgetPlugIn implements
 					.getImplementation()).getWidget();
 		}
 
+		@Override
 		public Component getEditorComponent() {
 			return component;
 		}
 		
+		@Override
 		public void addActionListener(ActionListener l) {
 		}
 		
@@ -138,17 +141,21 @@ public class SwingComboBoxWidgetPlugIn extends AWTWidgetPlugIn implements
 			}
 		}
 
+		@Override
 		public Object getItem() {
 			return selectedObject;
 		}
 
+		@Override
 		public void removeActionListener(ActionListener l) {
 			listeners.remove(l);
 		}
 
+		@Override
 		public void selectAll() {
 		}
 
+		@Override
 		public void setItem(Object anObject) {
 		}
 	}
@@ -157,15 +164,18 @@ public class SwingComboBoxWidgetPlugIn extends AWTWidgetPlugIn implements
 		return new SwingTextWidgetPlugIn();
 	}
 
+	@Override
 	public void listContentsChanged(int index0, int index1) {
 		comboBoxModel.listContentsChanged(index0, index1);
 
 	}
 
+	@Override
 	public void listIntervalAdded(int index0, int index1) {
 		comboBoxModel.listIntervalAdded(index0, index1);
 	}
 
+	@Override
 	public void listIntervalRemoved(int index0, int index1) {
 		comboBoxModel.listIntervalRemoved(index0, index1);
 	}
@@ -173,10 +183,12 @@ public class SwingComboBoxWidgetPlugIn extends AWTWidgetPlugIn implements
 	class ComboBoxModel extends AbstractListModel implements
 			javax.swing.ComboBoxModel {
 
+		@Override
 		public Object getSelectedItem() {
 			return getPlugInValue();
 		}
 		
+		@Override
 		public void setSelectedItem(Object anItem) {
 			Object newValue = anItem;
 			int selectedIndex=getSelectedIndex();
@@ -208,10 +220,12 @@ public class SwingComboBoxWidgetPlugIn extends AWTWidgetPlugIn implements
 			fireIntervalRemoved(this, index0, index1);
 		}
 
+		@Override
 		public Object getElementAt(int index) {
 			return getWidgetAssociation().getDisplayValueAtIndex(index);
 		}
 
+		@Override
 		public int getSize() {
 			return getWidgetAssociation().getDisplayValuesCount();
 		}

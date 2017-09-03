@@ -51,22 +51,27 @@ public class NSObjectControllerImpl extends NSObjectImpl implements NSObjectCont
 		return s;
 	}
 	
+	@Override
 	public void add() {
 		setContent(newObject());
 	}
 
+	@Override
 	public void addObject(Object obj) {
 		setContent(obj);
 	}
 
+	@Override
 	public boolean canAdd() {
 		return getObjectClass() != null;
 	}
 
+	@Override
 	public boolean canRemove() {
 		return (getContent()!=null);
 	}
 
+	@Override
 	public Class getObjectClass() {
 		return objectClass;
 	}
@@ -77,15 +82,18 @@ public class NSObjectControllerImpl extends NSObjectImpl implements NSObjectCont
 	  return current;
 	}
 
+	@Override
 	public List getSelectedObjects() {
 		return selectedObjects;
 	}
 
 	
+	@Override
 	public Object getSelection() {
 		return getSelectionProxy();
 	}
 
+	@Override
 	public Object newObject() {
 		if(getObjectClass()==null)
 			return null;
@@ -101,14 +109,17 @@ public class NSObjectControllerImpl extends NSObjectImpl implements NSObjectCont
 		return null;
 	}
 
+	@Override
 	public void remove() {
 		setContent(null);
 	}
 
+	@Override
 	public void setObjectClass(Class c) {
 		this.objectClass = c;
 	}
 
+	@Override
 	public Object getContent() {
 		return content;
 	}
@@ -135,6 +146,7 @@ public class NSObjectControllerImpl extends NSObjectImpl implements NSObjectCont
 		didChangeValueForKey("selection");
 	}
 	
+	@Override
 	@NoKeyValueObserving
 	public void setContent(Object content) {
 		if(!doCommitStuff())

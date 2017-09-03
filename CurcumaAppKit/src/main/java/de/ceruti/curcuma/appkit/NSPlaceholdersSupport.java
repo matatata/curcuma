@@ -11,6 +11,7 @@ public class NSPlaceholdersSupport implements NSDefaultPlaceholders {
 	public NSPlaceholdersSupport() {
 	}
 	
+	@Override
 	public Object getDefaultPlaceholderForMarkerWithBinding(NSSelectionMarker marker,
 			String binding) {
 		if(!theMap.containsKey(binding) || !theMap.get(binding).containsKey(marker.getBindingOptionKey()))
@@ -18,6 +19,7 @@ public class NSPlaceholdersSupport implements NSDefaultPlaceholders {
 		return theMap.get(binding).get(marker.getBindingOptionKey());
 	}
 
+	@Override
 	public void setDefaultPlaceholderForMarkerWithBinding(Object placeholder,
 	    NSSelectionMarker marker, String binding) {
 		theMap.put(binding, marker.getBindingOptionKey() ,placeholder);

@@ -51,6 +51,7 @@ class SelectionProxy implements ErrorHandling, KVObserver {
 		return new KVCMutableArrayProxy((KeyValueCoding) this, key);
 	}
 
+	@Override
 	public KeyValueCoding createCompliantObjectForKey(Object element, String key, boolean isWrite) {
 		return KeyValueCodingUtils.createCompliantObjectForKey(this, element, key, isWrite);
 	}
@@ -61,6 +62,7 @@ class SelectionProxy implements ErrorHandling, KVObserver {
 
 	private boolean settingValue = false;
 
+	@Override
 	public void setValueForUndefinedKey(Object value, Class<?> type, String key) {
 		List<?> l = controller.getSelectedObjects();
 		if (l.isEmpty())
@@ -80,6 +82,7 @@ class SelectionProxy implements ErrorHandling, KVObserver {
 		return getValueForUndefinedKey(key);
 	}
 
+	@Override
 	public Object getValueForUndefinedKey(String key) {
 		if (cachedValues.containsKey(key)) {
 			Object val = cachedValues.get(key);
@@ -157,6 +160,7 @@ class SelectionProxy implements ErrorHandling, KVObserver {
 		cachedValues.clear();
 	}
 
+	@Override
 	public void setNullValueForKey(String key) {
 		KeyValueCodingUtils.setNullValueForKey(this, key);
 	}
@@ -201,6 +205,7 @@ class SelectionProxy implements ErrorHandling, KVObserver {
 		obsss.remove(keyPath, observer);
 	}
 
+	@Override
 	public void observeValue(String keyPath, KeyValueObserving objet, KVOEvent change, Object context) {
 		if (settingValue) {
 			return;

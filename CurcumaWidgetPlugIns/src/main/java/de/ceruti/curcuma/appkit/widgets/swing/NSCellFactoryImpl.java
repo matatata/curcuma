@@ -21,6 +21,7 @@ import de.ceruti.curcuma.appkit.view.cells.WidgetPlugin;
 class NSCellFactoryImpl extends NSCellFactory {
 	private final PlugInFactory plugInFactory;
 	
+	@Override
 	public NSTextCell createCellForComponent(JLabel label){
 		WidgetPlugin pluf = plugInFactory.createPlugInForComponent(label);
 		NSTextFieldCell cell = new NSTextFieldCell();
@@ -28,6 +29,7 @@ class NSCellFactoryImpl extends NSCellFactory {
 		return cell;
 	}
 	
+	@Override
 	public NSTextCell createCellForComponent(JTextComponent t){
 		WidgetPlugin pluf = plugInFactory.createPlugInForComponent(t);
 		NSTextFieldCell cell = new NSTextFieldCell();
@@ -35,6 +37,7 @@ class NSCellFactoryImpl extends NSCellFactory {
 		return cell;
 	}
 	
+	@Override
 	public NSToggleCell createCellForComponent(ItemSelectable t){
 		WidgetPlugin pluf = plugInFactory.createPlugInForComponent(t);
 		NSToggleCellImpl cell = new NSToggleCellImpl();
@@ -42,6 +45,7 @@ class NSCellFactoryImpl extends NSCellFactory {
 		return cell;
 	}
 	
+	@Override
 	public NSBoundedRangeCell createCellForComponent(JSlider t){
 		WidgetPlugin pluf = plugInFactory.createPlugInForComponent(t);
 		NSActionCellImpl cell = new NSActionCellImpl();
@@ -49,6 +53,7 @@ class NSCellFactoryImpl extends NSCellFactory {
 		return cell;
 	}
 	
+	@Override
 	public NSBoundedRangeCell createCellForComponent(JProgressBar t){
 		WidgetPlugin pluf = plugInFactory.createPlugInForComponent(t);
 		NSActionCellImpl cell = new NSActionCellImpl();
@@ -56,6 +61,7 @@ class NSCellFactoryImpl extends NSCellFactory {
 		return cell;
 	}
 	
+	@Override
 	public NSComboCell createCellForComponent(JComboBox t){
 		WidgetPlugin pluf = plugInFactory.createPlugInForComponent(t);
 		NSComboBoxCell cell = new NSComboBoxCell();

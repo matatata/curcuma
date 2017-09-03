@@ -766,8 +766,6 @@ class KeyValueObservingImpl  {
 		String head = keyPath.substring(0, dotPos); 
 		String tail = keyPath.substring(dotPos+1,keyPath.length());
 
-
-		
 		Object o = null;
 		try{
 			o = kvc.getValueForKey(head);
@@ -776,17 +774,10 @@ class KeyValueObservingImpl  {
 		{
 			throw new KVOException(e);
 		}
-//		if(o==null)
-//			throw new IllegalStateException();
 
 		if(!(o instanceof KeyValueObserving))
 		{
-//			throw new KVOException();
-//			System.out.println();
 			logger.debug("Cannot remove forwarding Observer '" + head + "." + tail + " ' from Object [" + this + "]:");
-		}
-		else {
-//			((KeyValueObserving)o).removeObserver(backwardPropagator, tail);
 		}
 
 		
@@ -806,8 +797,6 @@ class KeyValueObservingImpl  {
 			}
 		}
 		_cleanForwards(head,tail);
-		//
-		
 	}
 	
 	private static Object unitializedVal = new Object() { @Override

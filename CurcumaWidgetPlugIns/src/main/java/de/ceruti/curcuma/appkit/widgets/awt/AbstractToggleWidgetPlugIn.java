@@ -13,6 +13,7 @@ public abstract class AbstractToggleWidgetPlugIn extends AWTWidgetPlugIn
 		 * simply calls selectionEditedViaGui of
 		 * {@link AbstractToggleWidgetPlugIn}
 		 */
+		@Override
 		public void itemStateChanged(ItemEvent e) {
 			selectionEditedViaGui();
 		}
@@ -41,7 +42,7 @@ public abstract class AbstractToggleWidgetPlugIn extends AWTWidgetPlugIn
 
 	@Override
 	public Object getPlugInValue() {
-		return (Boolean)isSelected();
+		return isSelected();
 	}
 
 	@Override
@@ -55,6 +56,7 @@ public abstract class AbstractToggleWidgetPlugIn extends AWTWidgetPlugIn
 		return new DefaultItemListener();
 	}
 
+	@Override
 	public abstract boolean isSelected();
 
 	protected abstract void removeItemListener(ItemListener l);
@@ -70,8 +72,10 @@ public abstract class AbstractToggleWidgetPlugIn extends AWTWidgetPlugIn
 	 * 
 	 * @param s
 	 */
+	@Override
 	public abstract void setSelected(boolean s);
 	
+	@Override
 	public void setValidityStatus(boolean isValid, String reason) {
 	}
 

@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.ItemSelectable;
 
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JSlider;

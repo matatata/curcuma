@@ -48,12 +48,14 @@ class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor
 		this.view = view;
 		addCellEditorListener(new CellEditorListener() {
 			
+			@Override
 			public void editingStopped(ChangeEvent arg0) {
-				System.out.println("Stopped editing!!!");
+				logger.info("Stopped editing");
 			}
 			
+			@Override
 			public void editingCanceled(ChangeEvent arg0) {
-				System.out.println("Cancel editing!!!");
+				logger.info("Canceled editing");
 			}
 		});
 	}
@@ -67,6 +69,7 @@ class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor
 	 * 
 	 * @see javax.swing.AbstractCellEditor#isCellEditable(java.util.EventObject)
 	 */
+	@Override
 	public boolean isCellEditable(EventObject anEvent) {
 		if (anEvent instanceof MouseEvent) {
 			return ((MouseEvent) anEvent).getClickCount() >= 2;
@@ -75,6 +78,7 @@ class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor
 	}
 
 	
+	@Override
 	public boolean hasValidCellValue(boolean cellState) {
 		return cellState;
 	}
@@ -85,6 +89,7 @@ class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor
 	 * @see
 	 * javax.swing.AbstractCellEditor#shouldSelectCell(java.util.EventObject )
 	 */
+	@Override
 	public boolean shouldSelectCell(EventObject arg0) {
 		logger.debug("shouldSelectCell() event=" + arg0);
 		return super.shouldSelectCell(arg0);
@@ -96,6 +101,7 @@ class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor
 	 * @see javax.swing.table.TableCellEditor#getTableCellEditorComponent(javax
 	 * .swing.JTable, java.lang.Object, boolean, int, int)
 	 */
+	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value,
 			boolean isSelected, int row, int column) {
 		logger.debug("Start edititing cell");
@@ -167,6 +173,7 @@ class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor
 		return c;
 	}
 
+	@Override
 	public Object getCellEditorValue() {
 		Object v = getEditorCell().getCellValue();
 		try {
@@ -189,6 +196,7 @@ class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor
 		}
 	}
 
+	@Override
 	public boolean stopCellEditing() {
 		return stopCellEditing(true);
 	}
@@ -227,6 +235,7 @@ class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor
 		return ret;
 	}
 
+	@Override
 	public void cancelCellEditing() {
 		cancelCellEditing(true);
 	}
@@ -240,38 +249,48 @@ class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor
 			endEditing();
 	}
 	
+	@Override
 	public void cellValueDidChangeViaGUI(NSCell sender) {
 	}
 
+	@Override
 	public void textDidBeginEditing(NSText sender) {
 	}
 
+	@Override
 	public void textDidChange(NSText sender) {
 	}
 
+	@Override
 	public void textDidEndEditing(NSText sender) {
 	}
 
+	@Override
 	public void textReceivedFocus(NSText sender) {
 		sender.selectAll();
 	}
 
+	@Override
 	public boolean textShouldBeginEditing(NSText sender) {
 		return true;
 	}
 
+	@Override
 	public boolean textShouldEndEditing(NSText sender) {
 		return getEditorCell().hasValidCellValue();
 	}
 
+	@Override
 	public void cellDidPerformAction(NSActionCell sender) {
 		stopCellEditing(true);
 	}
 
+	@Override
 	public boolean cellShouldPerformAction(NSActionCell sender) {
 		return getEditorCell().hasValidCellValue();
 	}
 
+	@Override
 	public void cellDidBeginEditing(NSEditorCell sender) {
 		if(!isEditing()) {
 			setEditingSubject(getView().getEditingSubject());
@@ -279,23 +298,28 @@ class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor
 		}
 	}
 
+	@Override
 	public void cellDidCancelEditing(NSEditorCell sender) {
 		cancelCellEditing();
 	}
 
+	@Override
 	public Object cellValidateCellValue(NSCell sender, Object c) throws ValidationException {
 		return c;
 	}
 	
+	@Override
 	public Object cellValidateDisplayValue(NSCell sender, Object obj) throws ValidationException {
 		return obj;
 	}
 
+	@Override
 	public boolean cellShouldAcceptInvalidValue(NSCell sender,
 			Object invalidValue, String errMsg) {
 		return false;
 	}
 
+	@Override
 	public boolean cellShouldAcceptInvalidPartialValue(NSCell sender,
 			Object invalidValue, String errMsg) {
 		return true;
@@ -341,6 +365,7 @@ class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor
 		return true;
 	}
 	
+	@Override
 	public void notifyValidationStatus(boolean success,String message) {
 	}
 

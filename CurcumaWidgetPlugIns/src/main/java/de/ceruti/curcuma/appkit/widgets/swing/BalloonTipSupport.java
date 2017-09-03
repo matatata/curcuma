@@ -22,10 +22,12 @@ public class BalloonTipSupport implements TipInterface {
 			Color.GRAY);
 	private BalloonTip balloonTip;
 
+	@Override
 	public void disconnect(JComponent w) {
 		logger.error("unimplemented");
 	}
 
+	@Override
 	public void connect(JComponent w) {
 
 		balloonTip = new BalloonTip(w, "<html><b>Hello</b></html>", style,
@@ -37,12 +39,14 @@ public class BalloonTipSupport implements TipInterface {
 		// Don't close the balloon when clicking the close-button, you just need
 		// to hide it
 		balloonTip.setCloseButtonActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				balloonTip.setVisible(false);
 			}
 		});
 	}
 
+	@Override
 	public void notifyMessage(String m) {
 
 		balloonTip.setText("<html><i>" + m + "</i></html>");
@@ -52,6 +56,7 @@ public class BalloonTipSupport implements TipInterface {
 		final Timer timer = new Timer();
 		TimerTask t = new TimerTask() {
 
+			@Override
 			public void run() {
 				balloonTip.setVisible(false);
 				timer.cancel();

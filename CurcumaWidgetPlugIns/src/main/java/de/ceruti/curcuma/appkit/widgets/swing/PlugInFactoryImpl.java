@@ -33,18 +33,21 @@ class PlugInFactoryImpl extends PlugInFactory {
 		return null;
 	}
 
+	@Override
 	public WidgetPlugin createPlugInForComponent(JLabel label){
 		WidgetPlugin w = new SwingLabelWidgetPlugIn();
 		w.setWidget(label);
 		return w;
 	}
 	
+	@Override
 	public WidgetPlugin createPlugInForComponent(JTextComponent t){
 		WidgetPlugin w = new SwingTextWidgetPlugIn();
 		w.setWidget(t);
 		return w;
 	}
 	
+	@Override
 	public WidgetPlugin createPlugInForComponent(ItemSelectable t){
 		WidgetPlugin w = new SwingToggleWidgetPlugIn();
 		w.setWidget(t);
@@ -52,24 +55,28 @@ class PlugInFactoryImpl extends PlugInFactory {
 	}
 	
 
+	@Override
 	public WidgetPlugin createPlugInForComponent(JSlider t) {
 		WidgetPlugin pl = new SwingBoundedRangeWidgetPlugIn();
 		pl.setWidget(t);
 		return pl;
 	}
 
+	@Override
 	public WidgetPlugin createPlugInForComponent(JProgressBar t) {
 		WidgetPlugin pl = new SwingBoundedRangeWidgetPlugIn();
 		pl.setWidget(t);
 		return pl;
 	}
 	
+	@Override
 	public WidgetPlugin createPlugInForComponent(JComboBox t) {
 		WidgetPlugin pl = new SwingComboBoxWidgetPlugIn();
 		pl.setWidget(t);
 		return pl;
 	}
 	
+	@Override
 	public TablePlugin createPlugInForComponent(JTable t) {
 		AbstractTableViewPlugIn plug = new SwingTableViewPlugIn();
 		plug.setViewWidget(t);

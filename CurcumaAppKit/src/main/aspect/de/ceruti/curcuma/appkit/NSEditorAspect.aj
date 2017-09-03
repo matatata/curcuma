@@ -46,6 +46,7 @@ aspect NSEditorAspect {
 		
 		void commitFailed(Object sender);
 		
+		@Override
 		void notifyValidationStatus(boolean success,String message);
 //		
 //		Object getMemento();
@@ -105,6 +106,7 @@ aspect NSEditorAspect {
 	NSCommitCallback NSEditorSupport.createCommitCallback() {
 		return new NSCommitCallback(){
 
+			@Override
 			public void editorDidCommit(NSEditor editor, boolean didCommit,
 					Object context) {
 				notifyValidationStatus(didCommit,context != null ? context.toString() : "Changes could not be committed.");

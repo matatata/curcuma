@@ -29,6 +29,7 @@ public class AWTLabelWidgetPlugIn extends AWTWidgetPlugIn {
 		getWidget().setText(p.toString()/*.stringValue()*/);
 	}
 	
+	@Override
 	public void setValidityStatus(boolean isValid, String reason) {
 	}
 

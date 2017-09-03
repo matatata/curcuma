@@ -13,10 +13,12 @@ public class TooltipStuff implements TipInterface {
 	private JComponent component;
 	private String oldTooltip;
 	
+	@Override
 	public void connect(JComponent w) {
 		this.component = w;
 	}
 
+	@Override
 	public void disconnect(JComponent w) {
 		if(w == this.component)
 		{
@@ -25,6 +27,7 @@ public class TooltipStuff implements TipInterface {
 		}
 	}
 
+	@Override
 	public void notifyMessage(String m) {
 		
 
@@ -42,6 +45,7 @@ public class TooltipStuff implements TipInterface {
 		
 		TimerTask t = new TimerTask() {
 
+			@Override
 			public void run() {
 				if(oldTooltip!=null)
 				component.setToolTipText(oldTooltip);

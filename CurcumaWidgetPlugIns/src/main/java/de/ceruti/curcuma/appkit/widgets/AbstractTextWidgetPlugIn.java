@@ -3,8 +3,6 @@ package de.ceruti.curcuma.appkit.widgets;
 import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
 
-import de.ceruti.curcuma.api.appkit.view.NSText;
-import de.ceruti.curcuma.appkit.view.cells.EditorWidgetPlugin;
 import de.ceruti.curcuma.appkit.view.cells.TextFieldCellWidgetPlugin;
 
 public abstract class AbstractTextWidgetPlugIn extends AbstractActionWidgetPlugIn
@@ -31,6 +29,7 @@ public abstract class AbstractTextWidgetPlugIn extends AbstractActionWidgetPlugI
 	 * (non-Javadoc)
 	 * @see de.ceruti.curcuma.api.appkit.view.NSText#getText()
 	 */
+	@Override
 	public final String getText() {
 		return getString();
 	}
@@ -66,6 +65,7 @@ public abstract class AbstractTextWidgetPlugIn extends AbstractActionWidgetPlugI
 	 * @see #setString(String)
 	 * @see #notifyAssociationEnabled()
 	 */
+	@Override
 	public final void setText(String t) {
 		String orig = getString();
 		if (orig.equals(t))
@@ -87,6 +87,7 @@ public abstract class AbstractTextWidgetPlugIn extends AbstractActionWidgetPlugI
 	private Object origFGColor;
 	
 	private boolean validityState = true;
+	@Override
 	public void setValidityStatus(boolean isValid, String reason) {
 		
 		if(this.validityState == isValid)
@@ -105,6 +106,7 @@ public abstract class AbstractTextWidgetPlugIn extends AbstractActionWidgetPlugI
 		}
 	}
 	
+	@Override
 	public void textBeginEditing() {
 		logger.debug("textBeginEditing()");
 		setEditingState(true);
@@ -147,6 +149,7 @@ public abstract class AbstractTextWidgetPlugIn extends AbstractActionWidgetPlugI
 		getWidgetAssociation().textDidChange(this);
 	}
 
+	@Override
 	public void textEndEditing() {
 		logger.debug("textEndEditing()");
 		setEditingState(false);

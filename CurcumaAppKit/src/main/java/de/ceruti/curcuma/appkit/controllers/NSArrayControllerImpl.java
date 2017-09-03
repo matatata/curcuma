@@ -127,6 +127,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 		}
 	}
 
+	@Override
 	public void addObjects(Collection c) {
 		if(!doCommitStuff())
 			return;
@@ -176,11 +177,13 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 
 	}
 
+	@Override
 	public boolean removeSelectedObjects(Collection objs) {
 		IndexSet indexes = Utils.indexesInList(getArrangedObjects(), objs);
 		return removeSelectionIndexes(indexes);
 	}
 
+	@Override
 	public boolean addSelectedObjects(Collection objs) {
 		IndexSet indexes = Utils.indexesInList(getArrangedObjects(), objs);
 		return addSelectionIndexes(indexes);
@@ -248,6 +251,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 	
 
 	
+	@Override
 	public boolean addSelectionIndexes(IndexSet idx) {
 		logger.debug("addSelectionIndexes(" + idx + ")");
 		if(!doCommitStuff())
@@ -264,6 +268,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 		return true;
 	}
 
+	@Override
 	public boolean removeSelectionIndexes(IndexSet idx) {
 		logger.debug("removeSelectionIndexes(" + idx + ")");
 		
@@ -282,6 +287,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 		return true;
 	}
 
+	@Override
 	public List arrangeObjects(List src) {
 		List ret = new ArrayList();
 
@@ -299,34 +305,42 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 		return ret;
 	}
 
+	@Override
 	public void clearSelection() {
 		setSelectionIndexes(Factory.emptyIndexSet());
 	}
 
+	@Override
 	public List getArrangedObjects() {
 		return observableArrangedObjects;
 	}
 
+	@Override
 	public List getContentArray() {
 		return (List) getContent();
 	}
 
+	@Override
 	public NSArrayFilter getFilterPredicate() {
 		return this.filterPredicate;
 	}
 
+	@Override
 	public IndexSet getSelectionIndexes() {
 		return selectionIndexes.immutableIndexSet();
 	}
 
+	@Override
 	public boolean isPreservesSelection() {
 		return this.preservesSelection;
 	}
 
+	@Override
 	public boolean isSelectsInsertedObjects() {
 		return this.selectsInsertedObjects;
 	}
 
+	@Override
 	public void removeObject(Object o) {
 		List selectedObjects = getSelectedObjects();
 		if (getMutableKVOContentArray().remove(o)) {
@@ -345,6 +359,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 		}
 	}
 
+	@Override
 	public void removeObjects(Collection c) {
 		List selectedObjects = getSelectedObjects();
 		if (getMutableKVOContentArray().removeAll(c)) {
@@ -395,6 +410,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 	 * calls {@link #selectionDidChange()} and {@link #selectionWillChange()}
 	 * and post Notifications for "arrangedObjects"
 	 */
+	@Override
 	public void rearrangeObjects() {
 
 		if (!commitEditing(this))
@@ -439,10 +455,12 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 		}
 	}
 
+	@Override
 	public void setContentArray(List array) {
 		setContent(array);
 	}
 
+	@Override
 	public void setFilterPredicate(NSArrayFilter filterPredicate) {
 		if (this.filterPredicate != filterPredicate) {
 			this.filterPredicate = filterPredicate;
@@ -450,15 +468,18 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 		}
 	}
 
+	@Override
 	public void setPreservesSelection(boolean preservesSelection) {
 		this.preservesSelection = preservesSelection;
 	}
 
+	@Override
 	public void setSelectedObjects(Collection objs) {
 		IndexSet indexes = Utils.indexesInList(getArrangedObjects(), objs);
 		setSelectionIndexes(indexes);
 	}
 
+	@Override
 	public void setSelection(Object o) {
 		int index = getArrangedObjects().indexOf(o);
 		if (index == -1)
@@ -467,6 +488,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 		setSelectionIndexes(Factory.indexSet(index));
 	}
 
+	@Override
 	@NoKeyValueObserving
 	public void setSelectionIndexes(IndexSet indexes) {
 		if(!doCommitStuff())
@@ -485,22 +507,27 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 		}
 	}
 
+	@Override
 	public boolean isAlwaysUsesMultipleValuesMarker() {
 		return this.alwaysUsesMultipleValuesMarker;
 	}
 
+	@Override
 	public void setAlwaysUsesMultipleValuesMarker(boolean b) {
 		this.alwaysUsesMultipleValuesMarker = b;
 	}
 
+	@Override
 	public void setSelectsInsertedObjects(boolean selectsInsertedObjects) {
 		this.selectsInsertedObjects = selectsInsertedObjects;
 	}
 
+	@Override
 	public boolean isClearsFilterPredicateOnInsertion() {
 		return clearsFilterPredicateOnInsertion;
 	}
 
+	@Override
 	public void setClearsFilterPredicateOnInsertion(
 			boolean clearsFilterPredicateOnInsertion) {
 		this.clearsFilterPredicateOnInsertion = clearsFilterPredicateOnInsertion;

@@ -95,6 +95,7 @@ public abstract class AbstractTableViewPlugIn extends AbstractViewPlugIn
 	/**
 	 * Gui should update it's selection
 	 */
+	@Override
 	public void setSelectionIndexes(IndexSet indexes) {
 		stopListeningForSelectionChanges();
 		if(indexes.isContiguous()){

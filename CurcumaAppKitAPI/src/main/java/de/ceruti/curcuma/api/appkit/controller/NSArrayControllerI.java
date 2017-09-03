@@ -46,6 +46,7 @@ public interface NSArrayControllerI extends NSObjectControllerI{
 	
 	void setSelection(Object o);
 
+	@Override
 	void setContent(Object content);
 
 	List getContentArray();
@@ -57,17 +58,20 @@ public interface NSArrayControllerI extends NSObjectControllerI{
 	/**
 	 * remove the selected Objects from the receivers content and arrangedObjects array
 	 */
+	@Override
 	void remove();
 
 	/**
 	 * Creates and adds a new object to the receiver's content and arranged objects.
 	 */
+	@Override
 	void add();
 
 	/**
 	 * F�gt obj dem contentArray und den arrangedObjects hinzu 
 	 * @param obj
 	 */
+	@Override
 	void addObject(Object obj);
 
 	/**

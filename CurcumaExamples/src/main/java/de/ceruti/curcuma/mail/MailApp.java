@@ -21,6 +21,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import de.ceruti.curcuma.api.appkit.controller.NSArrayControllerI;
 import de.ceruti.curcuma.api.appkit.controller.NSObjectControllerI;
+import de.ceruti.curcuma.api.appkit.view.NSControl;
 import de.ceruti.curcuma.api.appkit.view.NSTextField;
 import de.ceruti.curcuma.api.appkit.view.cells.NSCell;
 import de.ceruti.curcuma.api.appkit.view.cells.NSEditorCell;
@@ -88,7 +89,7 @@ public class MailApp {
 		textField = new NSTextFieldImpl();
 		textField.setCell(textCell);
 		((NSTextFieldImpl)textField).setViewPlugIn(((NSTextFieldCell)textCell).getWidgetPlugIn());
-		textField.bind(NSTextField.ControlValueBinding, mailArrayController, "selection.body", new DefaultBindingOptions());
+		textField.bind(NSControl.ControlValueBinding, mailArrayController, "selection.body", new DefaultBindingOptions());
 		
 		
 		
@@ -145,8 +146,8 @@ public class MailApp {
 
 	private static void initFlagColumn(NSTableView privsTableView) {
 		NSTableCol col = new NSTableCol();
-		col.setDataCell(cellFactory.createCellForComponent((ItemSelectable)new JCheckBox()));
-		NSEditorCell editorCell = (NSEditorCell) cellFactory.createCellForComponent((ItemSelectable)new JCheckBox());
+		col.setDataCell(cellFactory.createCellForComponent(new JCheckBox()));
+		NSEditorCell editorCell = cellFactory.createCellForComponent(new JCheckBox());
 		col.setEditorCell(editorCell);
 		col.setIdentifier("Flag");
 		col.bind(NSCell.CellValueBinding,mailArrayController,"arrangedObjects.flagged",new DefaultBindingOptions());

@@ -29,6 +29,7 @@ public class SwingLabelWidgetPlugIn extends AWTWidgetPlugIn {
 		getWidget().setText(p == null ? null : p.toString());
 	}
 
+	@Override
 	public void setValidityStatus(boolean isValid, String reason) {
 	}
 }

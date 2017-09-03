@@ -33,6 +33,7 @@ public class AWTToggleWidgetPlugIn extends AbstractToggleWidgetPlugIn {
 		getJToggleButton().removeItemListener(l);
 	}
 
+	@Override
 	public void setSelected(boolean s) {
 		ItemSelectable o = getJToggleButton();
 		if(o instanceof Checkbox) {
@@ -42,6 +43,7 @@ public class AWTToggleWidgetPlugIn extends AbstractToggleWidgetPlugIn {
 		throw new UnsupportedOperationException(o.getClass().getName() + " not supported.");
 	}
 	
+	@Override
 	public String getTitle() {
 		ItemSelectable o=getJToggleButton();
 		if(o instanceof Checkbox)
@@ -49,6 +51,7 @@ public class AWTToggleWidgetPlugIn extends AbstractToggleWidgetPlugIn {
 		throw new UnsupportedOperationException(o.getClass().getName() + " not supported.");
 	}
 	
+	@Override
 	public void setTitle(String s){
 		ItemSelectable o=getJToggleButton();
 		if(o instanceof Checkbox){

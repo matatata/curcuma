@@ -51,27 +51,25 @@ public class SwingTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
 
 	@Override
 	public void notifyMessage(String m) {
-//		System.out.println(m);
 		balloonTipSupport.notifyMessage(m);
-		
-		
-		
-		
-		
 	}
 	
+	@Override
 	public Object getBackground() {
 		return getWidget().getBackground();
 	}
 
+	@Override
 	public void setBackground(Object nat) {
 		getWidget().setBackground((Color)nat);
 	}
 	
+	@Override
 	public Object getForeground() {
 		return getWidget().getForeground();
 	}
 
+	@Override
 	public void setForeground(Object nat) {
 		getWidget().setForeground((Color)nat);
 	}
@@ -143,6 +141,7 @@ public class SwingTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
 		setImpl(null);
 	}
 
+	@Override
 	protected void establishCellConnection() {
 		setImpl(createImpl(getJComponent()));
 		super.establishCellConnection();
@@ -163,6 +162,7 @@ public class SwingTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
 	/**
 	 * delegates to Implementation
 	 */
+	@Override
 	public final void clearSelection() {
 		getImpl().clearSelection();
 	}
@@ -170,6 +170,7 @@ public class SwingTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
 	/**
 	 * delegates to Implementation
 	 */
+	@Override
 	public final void selectAll() {
 		getImpl().selectAll();
 	}
@@ -221,34 +222,44 @@ public class SwingTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
 		
 		class Dummy implements Implementation {
 
+			@Override
 			public void addActionListener(ActionListener l) {
 			}
 
+			@Override
 			public void breakCellConnection() {
 			}
 
+			@Override
 			public void clearSelection() {
 			}
 
+			@Override
 			public void establishCellConnection() {
 			}
 
+			@Override
 			public String getString() {
 				return "";
 			}
 
+			@Override
 			public void removeActionListener(ActionListener l) {
 			}
 
+			@Override
 			public void selectAll() {
 			}
 
+			@Override
 			public void setString(String s) {
 			}
 
+			@Override
 			public void startListeningForTextEvents() {
 			}
 
+			@Override
 			public void stopListeningForTextEvents() {
 			}
 			
@@ -281,24 +292,29 @@ public class SwingTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
 			this.widget = widget;
 		}
 
+		@Override
 		public void addActionListener(ActionListener l) {
 			if (getWidget() instanceof JTextField)
 				((JTextField) getWidget()).addActionListener(l);
 		}
 
+		@Override
 		public String getString() {
 			return getWidget().getText();
 		}
 
+		@Override
 		public void removeActionListener(ActionListener l) {
 			if (getWidget() instanceof JTextField)
 				((JTextField) getWidget()).removeActionListener(l);
 		}
 
+		@Override
 		public void setString(String s) {
 			getWidget().setText(s);
 		}
 
+		@Override
 		public void startListeningForTextEvents() {
 
 			DocumentFilter currentFilter = ((AbstractDocument) getWidget().getDocument())
@@ -312,16 +328,19 @@ public class SwingTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
 
 		}
 
+		@Override
 		public void stopListeningForTextEvents() {
 			((AbstractDocument) getWidget().getDocument())
 					.setDocumentFilter(oldFilter);
 
 		}
 
+		@Override
 		public void clearSelection() {
 			getWidget().select(0, 0);
 		}
 
+		@Override
 		public void selectAll() {
 			getWidget().selectAll();
 		}
@@ -377,9 +396,11 @@ public class SwingTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
 			}
 		}
 
+		@Override
 		public void breakCellConnection() {
 		}
 
+		@Override
 		public void establishCellConnection() {
 		}
 

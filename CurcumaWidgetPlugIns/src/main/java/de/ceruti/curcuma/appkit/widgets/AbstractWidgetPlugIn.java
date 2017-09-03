@@ -34,16 +34,20 @@ public abstract class AbstractWidgetPlugIn extends AbstractViewPlugIn implements
 		return getWidget();
 	}
 
+	@Override
 	public WidgetPlugin.Delegate getWidgetAssociation() {
 		return association;
 	}
 
+	@Override
 	public boolean isEditable() {
 		return isEnabled();
 	}
 
+	@Override
 	public abstract void notifyMessage(String m);
 
+	@Override
 	public void setEditable(boolean e) {
 		setEnabled(e);
 	}
@@ -57,6 +61,7 @@ public abstract class AbstractWidgetPlugIn extends AbstractViewPlugIn implements
 	 * @see de.ceruti.curcuma.appkit.view.cells.WidgetPlugin#setPlugInValue(Object)
 	 * @see #setNotifyAssociationEnabled(boolean)
 	 */
+	@Override
 	public final void setPlugInValue(Object p)
 	{
 		if(getWidget()==null)
@@ -70,6 +75,7 @@ public abstract class AbstractWidgetPlugIn extends AbstractViewPlugIn implements
 		setNotifyAssociationEnabled(true);
 	}
 
+	@Override
 	public Object validatePlugInValue(Object o) throws ValidationException {
 		return o;
 	}
@@ -79,9 +85,11 @@ public abstract class AbstractWidgetPlugIn extends AbstractViewPlugIn implements
 	/*
 	 * @see de.ceruti.curcuma.appkit.view.WidgetPlugin#getPlugInValue()
 	 */
+	@Override
 	public abstract Object getPlugInValue();
 
 	
+	@Override
 	public final void setWidgetAssociation(WidgetPlugin.Delegate association) {
 		this.association = association;
 	}
@@ -92,6 +100,7 @@ public abstract class AbstractWidgetPlugIn extends AbstractViewPlugIn implements
 	protected void establishCellConnection() {
 	}
 	
+	@Override
 	public final void setWidget(Object w) {
 		
 		if (getWidget() != w) {
@@ -125,18 +134,22 @@ public abstract class AbstractWidgetPlugIn extends AbstractViewPlugIn implements
 		logger.debug(this + ".setNotifyAssociationEnabled=" + doNotify);
 	}
 
+	@Override
 	public final Object getNativeCellRenderer() {
 		return nativeCellRenderer;
 	}
 
+	@Override
 	public final void setNativeCellRenderer(Object nativeCellRenderer) {
 		this.nativeCellRenderer = nativeCellRenderer;
 	}
 
+	@Override
 	public final Object getNativeCellEditor() {
 		return nativeCellEditor;
 	}
 
+	@Override
 	public final void setNativeCellEditor(Object nativeCellEditor) {
 		this.nativeCellEditor = nativeCellEditor;
 	}

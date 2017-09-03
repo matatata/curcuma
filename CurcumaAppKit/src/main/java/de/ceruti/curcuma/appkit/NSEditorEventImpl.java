@@ -30,10 +30,12 @@ public class NSEditorEventImpl implements NSEditorEvent {
 		this.sender = sender;
 	}
 	
+	@Override
 	public Type getType() {
 		return t;
 	}
 	
+	@Override
 	public Object getSender() {
 		return sender;
 	}

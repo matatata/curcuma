@@ -8,6 +8,7 @@ public abstract class AbstractActionWidgetPlugIn extends AbstractWidgetPlugIn im
 		super();
 	}
 
+	@Override
 	public ActionControlWidgetPlugin.Delegate getWidgetAssociation() {
 		Object assoc = super.getWidgetAssociation();
 		if (assoc instanceof ActionControlWidgetPlugin.Delegate)

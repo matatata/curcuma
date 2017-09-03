@@ -23,6 +23,7 @@ public abstract class AbstractAWTTextWidgetPlugIn extends
 	 */
 	protected class DefaultActionListener implements ActionListener {
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			AbstractAWTTextWidgetPlugIn.this.actionPerformed();
 		}
@@ -31,10 +32,12 @@ public abstract class AbstractAWTTextWidgetPlugIn extends
 
 	protected class DefaultFocusListener implements FocusListener {
 
+		@Override
 		public void focusGained(FocusEvent e) {
 			AbstractAWTTextWidgetPlugIn.this.focusGained();
 		}
 
+		@Override
 		public void focusLost(FocusEvent e) {
 			AbstractAWTTextWidgetPlugIn.this.focusLost();
 		}
@@ -68,10 +71,12 @@ public abstract class AbstractAWTTextWidgetPlugIn extends
 	protected AbstractAWTTextWidgetPlugIn() {
 	}
 
+	@Override
 	public Component getWidget() {
 		return component;
 	}
 
+	@Override
 	public boolean hasFocus() {
 		return getWidget().hasFocus();
 	}
@@ -89,13 +94,14 @@ public abstract class AbstractAWTTextWidgetPlugIn extends
 	@Override
 	public void notifyMessage(String m) {
 		System.out.println(m);
-//		Toolkit.getDefaultToolkit().beep();
 	}
 
+	@Override
 	public final void requestFocus() {
 		getWidget().requestFocusInWindow();
 	}
 	
+	@Override
 	public void textRequestFocus() {
 		requestFocus();
 	}
@@ -149,12 +155,14 @@ public abstract class AbstractAWTTextWidgetPlugIn extends
 		return new DefaultFocusListener();
 	}
 
+	@Override
 	protected abstract String getString();
 
 	protected abstract void removeActionListener(ActionListener l);
 
 	protected abstract void removeFocusListener(FocusListener l);
 
+	@Override
 	protected abstract void setString(String s);
 
 	/**

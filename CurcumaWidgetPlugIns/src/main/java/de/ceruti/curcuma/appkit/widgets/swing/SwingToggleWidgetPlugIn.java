@@ -12,6 +12,7 @@ public class SwingToggleWidgetPlugIn extends AWTToggleWidgetPlugIn {
 		super();
 	}
 
+	@Override
 	public void setSelected(boolean s) {
 		ItemSelectable o = getJToggleButton();
 		if(o instanceof AbstractButton){
@@ -21,6 +22,7 @@ public class SwingToggleWidgetPlugIn extends AWTToggleWidgetPlugIn {
 		super.setSelected(s);
 	}
 	
+	@Override
 	public String getTitle() {
 		ItemSelectable o=getJToggleButton();
 		if(o instanceof AbstractButton)
@@ -28,6 +30,7 @@ public class SwingToggleWidgetPlugIn extends AWTToggleWidgetPlugIn {
 		return super.getTitle();
 	}
 	
+	@Override
 	public void setTitle(String s){
 		ItemSelectable o=getJToggleButton();
 		if(o instanceof AbstractButton){

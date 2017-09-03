@@ -22,18 +22,22 @@ public class AWTViewPlugIn extends AbstractViewPlugIn implements ViewPlugIn {
 		this.component = (Component) w;
 	}
 
+	@Override
 	public boolean isEnabled() {
 		return getViewWidget().isEnabled();
 	}
 
+	@Override
 	public boolean isVisible() {
 		return getViewWidget().isVisible();
 	}
 
+	@Override
 	public void setEnabled(boolean b) {
 		getViewWidget().setEnabled(b);
 	}
 
+	@Override
 	public void setVisible(boolean b) {
 		getViewWidget().setVisible(b);
 	}

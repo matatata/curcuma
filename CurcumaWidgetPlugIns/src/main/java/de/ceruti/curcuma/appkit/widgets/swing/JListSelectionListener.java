@@ -10,6 +10,7 @@ import de.ceruti.curcuma.core.Factory;
 
 public abstract class JListSelectionListener implements ListSelectionListener {
 
+	@Override
 	public void valueChanged(ListSelectionEvent lse) {
 		if (!lse.getValueIsAdjusting()) {
 			int[] selection = getSelectedIndices(lse.getSource(), getModel(

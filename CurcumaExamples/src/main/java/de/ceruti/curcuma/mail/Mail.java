@@ -2,6 +2,8 @@ package de.ceruti.curcuma.mail;
 
 import java.util.Date;
 
+import de.ceruti.curcuma.api.keyvaluecoding.exceptions.ValidationException;
+
 public class Mail {
 	private String betreff;
 	private String body;
@@ -34,6 +36,12 @@ public class Mail {
 
 	public void setRcptTo(String rcptTo) {
 		this.rcptTo = rcptTo;
+	}
+	
+	public String validateRcptTo(String s) throws ValidationException {
+		if(s == null || s.isEmpty())
+			throw new ValidationException("RcptTo must not be empty");
+		return s;
 	}
 
 	public Date getDate() {

@@ -24,6 +24,7 @@ public class SwingBoundedRangeWidgetPlugIn extends AWTWidgetPlugIn implements Bo
 			addChangeListener(this);
 		}
 		
+		@Override
 		public void stateChanged(ChangeEvent e) {
 			if (!notifyAssociationEnabled())
 				return;
@@ -32,11 +33,13 @@ public class SwingBoundedRangeWidgetPlugIn extends AWTWidgetPlugIn implements Bo
 		}
 	}
 	
+	@Override
 	public void setValidityStatus(boolean isValid, String reason) {
 	}
 	
 
 	
+	@Override
 	public BoundedRangeWidgetPlugin.Delegate getWidgetAssociation() {
 		Object assoc = super.getWidgetAssociation();
 		if (assoc instanceof BoundedRangeWidgetPlugin.Delegate)
@@ -44,18 +47,22 @@ public class SwingBoundedRangeWidgetPlugIn extends AWTWidgetPlugIn implements Bo
 		return BoundedRangeWidgetPlugin.Delegate.Dummy.INSTANCE;
 	}
 	
+	@Override
 	public void setMaximumPlugInValue(int v) {
 		changeListenerModel.setMaximum(v);
 	}
 
+	@Override
 	public void setMinimumPlugInValue(int v) {
 		changeListenerModel.setMinimum(v);
 	}
 	
+	@Override
 	public int getMaximumPlugInValue() {
 		return changeListenerModel.getMaximum();
 	}
 
+	@Override
 	public int getMinimumPlugInValue() {
 		return changeListenerModel.getMinimum();
 	}
@@ -120,10 +127,12 @@ public class SwingBoundedRangeWidgetPlugIn extends AWTWidgetPlugIn implements Bo
 		
 	}
 
+	@Override
 	public int getValue() {
 		return changeListenerModel.getValue();
 	}
 
+	@Override
 	public void setValue(int v) {
 		changeListenerModel.setValue(v);
 	}
