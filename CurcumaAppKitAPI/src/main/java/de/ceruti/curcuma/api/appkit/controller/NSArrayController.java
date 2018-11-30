@@ -6,7 +6,7 @@ import java.util.List;
 import de.ceruti.curcuma.api.core.IndexSet;
 
 @SuppressWarnings("rawtypes")
-public interface NSArrayControllerI extends NSObjectControllerI{
+public interface NSArrayController extends NSObjectController{
 
 	String CONTENT_ARRAY = "contentArray";
 	String ARRANGED_OBJECTS = "arrangedObjects";

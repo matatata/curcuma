@@ -26,6 +26,10 @@ public class KeyValueObservingImplTest  {
 	public static class Bean {
 		private String name;
 		private Bean next;
+		
+		public Bean(String name) {
+			this.name=name;
+		}
 
 		public String getName() {
 			return name;
@@ -47,35 +51,75 @@ public class KeyValueObservingImplTest  {
 			return new KVCMutableArrayProxy((KeyValueCoding) this,key);
 		}
 		
+		@Override
+		public String toString() {
+			return name;
+		}
+		
 
 	}
 
 	@Test
 	public void testPropertyChangeInRelationIsNotified() {
-		Bean bean = new Bean();
+		Bean bean = new Bean("bean");
 		RecordingObserver recordingObserver = new RecordingObserver();
 		bean.addObserver(recordingObserver, "next.name", "ctx", KeyValueObservingOptionNew | KeyValueObservingOptionOld);
 
 		bean.setName("Name");
-		bean.setNext(new Bean());
+		bean.setNext(new Bean("next"));
 		recordingObserver.clear(); // clear prior events
 		
 		bean.getNext().setName("Tom"); 
 		
 		assertEquals(1, recordingObserver.getEvts().size());
 		KVOEvent event = recordingObserver.getEvts().get(0);
-		assertNull( event.getOldValue());
+		assertEquals("next", event.getOldValue());
 		assertEquals("Tom", event.getNewValue());
 	}
 	
 	@Test
+	public void testPropertyChangeIn2RelationIsNotified() {
+		Bean bean = new Bean("bean");
+		RecordingObserver recordingObserver = new RecordingObserver();
+		bean.addObserver(recordingObserver, "next.next.name", "ctx", KeyValueObservingOptionNew | KeyValueObservingOptionOld);
+
+		
+		Bean nextBean = new Bean("next");
+		nextBean.setNext(new Bean("next.next"));
+		bean.setNext(nextBean);
+		
+		assertEquals(1, recordingObserver.getEvts().size());
+		KVOEvent event = recordingObserver.getEvts().get(0);
+		assertNull(event.getOldValue());
+		assertEquals("next.next", event.getNewValue());
+		
+		recordingObserver.clear(); // clear prior events
+		bean.getNext().getNext().setName("Tom"); 
+		
+		assertEquals(1, recordingObserver.getEvts().size());
+		event = recordingObserver.getEvts().get(0);
+		assertEquals("next.next", event.getOldValue());
+		assertEquals("Tom", event.getNewValue());
+		
+		recordingObserver.clear();
+		
+		bean.getNext().setNext(null);
+		
+		assertEquals(1, recordingObserver.getEvts().size());
+		event = recordingObserver.getEvts().get(0);
+		assertEquals("Tom", event.getOldValue());
+		assertNull( event.getNewValue());
+		
+	}
+	
+	@Test
 	public void testPropertyChangeInRelationIsNotifiedNoneOption() {
-		Bean bean = new Bean();
+		Bean bean = new Bean("bean");
 		RecordingObserver recordingObserver = new RecordingObserver();
 		bean.addObserver(recordingObserver, "next.name", "ctx", KeyValueObservingOptionNone);
 
 		bean.setName("Name");
-		bean.setNext(new Bean());
+		bean.setNext(new Bean("next"));
 		recordingObserver.clear(); // clear prior events
 		
 		bean.getNext().setName("Tom"); 

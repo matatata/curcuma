@@ -9,7 +9,7 @@ import de.ceruti.curcuma.api.keyvalueobserving.KeyValueObserving;
 
 
 @SuppressWarnings("rawtypes")
-public interface NSObjectControllerI extends NSEditable, KeyValueCoding, KeyValueObserving, KeyValueBindingCreation {
+public interface NSObjectController extends NSEditable, KeyValueCoding, KeyValueObserving, KeyValueBindingCreation {
 
 	String ContentBinding="content";
 	

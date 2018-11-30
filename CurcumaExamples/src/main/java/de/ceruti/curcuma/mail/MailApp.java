@@ -19,8 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import de.ceruti.curcuma.api.appkit.controller.NSArrayControllerI;
-import de.ceruti.curcuma.api.appkit.controller.NSObjectControllerI;
+import de.ceruti.curcuma.api.appkit.controller.NSArrayController;
+import de.ceruti.curcuma.api.appkit.controller.NSObjectController;
 import de.ceruti.curcuma.api.appkit.view.NSControl;
 import de.ceruti.curcuma.api.appkit.view.NSTextField;
 import de.ceruti.curcuma.api.appkit.view.cells.NSCell;
@@ -43,8 +43,8 @@ public class MailApp {
 	private static JFrame frame;
 	private static JTable resourceTable;
 	private static JTable privsTable;
-	private static NSArrayControllerI resourcesArrayController;
-	private static NSArrayControllerImpl mailArrayController;
+	private static NSArrayController resourcesArrayController;
+	private static NSArrayController mailArrayController;
 	private static JTextArea textArea;
 	private static NSCellFactory cellFactory = NSCellFactory.create(PlugInFactory.get());
 
@@ -179,7 +179,7 @@ public class MailApp {
 
 	private static void initPrivsArrayController() {
 		mailArrayController = new NSArrayControllerImpl();
-		mailArrayController.bind(NSObjectControllerI.ContentBinding,
+		mailArrayController.bind(NSObjectController.ContentBinding,
 				resourcesArrayController, "selection.mails",
 				new DefaultBindingOptions());
 	}

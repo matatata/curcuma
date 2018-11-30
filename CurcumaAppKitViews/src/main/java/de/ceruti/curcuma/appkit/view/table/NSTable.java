@@ -11,7 +11,7 @@ import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSEditable;
-import de.ceruti.curcuma.api.appkit.controller.NSArrayControllerI;
+import de.ceruti.curcuma.api.appkit.controller.NSArrayController;
 import de.ceruti.curcuma.api.appkit.view.cells.NSCell;
 import de.ceruti.curcuma.api.appkit.view.cells.NSEditorCell;
 import de.ceruti.curcuma.api.appkit.view.table.NSTableColumn;
@@ -103,15 +103,15 @@ public class NSTable extends NSViewBase implements NSTableView {
 			case TablePlugin.Delegate.SELECTION_INDEXES_REMOVE:
 			{
 				BindingInfo ifo = NSTable.this.getInfoForBinding(SelectionIndexesBinding);
-				if(ifo==null || !(ifo.getObservedObject() instanceof NSArrayControllerI))
+				if(ifo==null || !(ifo.getObservedObject() instanceof NSArrayController))
 					return false;
 
 				IndexSet oldSelection = this.getSelectionIndexes();
 				boolean success = false;
 				if(changeType==TablePlugin.Delegate.SELECTION_INDEXES_ADDED)
-					success = ((NSArrayControllerI)ifo.getObservedObject()).addSelectionIndexes(newSelection);
+					success = ((NSArrayController)ifo.getObservedObject()).addSelectionIndexes(newSelection);
 				else
-					success = ((NSArrayControllerI)ifo.getObservedObject()).removeSelectionIndexes(newSelection);
+					success = ((NSArrayController)ifo.getObservedObject()).removeSelectionIndexes(newSelection);
 				
 				if(!success)
 				{

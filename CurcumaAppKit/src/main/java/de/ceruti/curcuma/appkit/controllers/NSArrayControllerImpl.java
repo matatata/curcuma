@@ -9,7 +9,7 @@ import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSSelectionMarker;
-import de.ceruti.curcuma.api.appkit.controller.NSArrayControllerI;
+import de.ceruti.curcuma.api.appkit.controller.NSArrayController;
 import de.ceruti.curcuma.api.appkit.controller.NSArrayFilter;
 import de.ceruti.curcuma.api.core.IndexSet;
 import de.ceruti.curcuma.api.core.MutableIndexSet;
@@ -21,7 +21,7 @@ import de.ceruti.curcuma.keyvalueobserving.NoKeyValueObserving;
 
 @SuppressWarnings({"rawtypes","unchecked"})
 public class NSArrayControllerImpl extends NSObjectControllerImpl implements
-		NSArrayControllerI {
+		NSArrayController {
 	private static Category logger = Logger
 			.getInstance(NSArrayControllerImpl.class);
 
@@ -38,8 +38,8 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 
 	public NSArrayControllerImpl() {
 		observableArrangedObjects = new ObservableArray(this, this,
-				NSArrayControllerI.ARRANGED_OBJECTS, new ArrayList());
-		mutableKVOContentArray = mutableArrayValueForKey(NSArrayControllerI.CONTENT_ARRAY);
+				NSArrayController.ARRANGED_OBJECTS, new ArrayList());
+		mutableKVOContentArray = mutableArrayValueForKey(NSArrayController.CONTENT_ARRAY);
 	}
 	
 	private List getMutableKVOContentArray() {
@@ -419,12 +419,12 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 		if (!isPreservesSelection()) {
 			try {
 				clearSelection();
-				willChangeValueForKey(NSArrayControllerI.ARRANGED_OBJECTS);
+				willChangeValueForKey(NSArrayController.ARRANGED_OBJECTS);
 				observableArrangedObjects = new ObservableArray(this, this,
-						NSArrayControllerI.ARRANGED_OBJECTS, arrangeObjects(getContentArray()));
+						NSArrayController.ARRANGED_OBJECTS, arrangeObjects(getContentArray()));
 				return;
 			} finally {
-				didChangeValueForKey(NSArrayControllerI.ARRANGED_OBJECTS);
+				didChangeValueForKey(NSArrayController.ARRANGED_OBJECTS);
 			}
 		}
 
@@ -432,7 +432,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 
 		try {
 			boolean chSel = selectionWillChange();
-			willChangeValueForKey(NSArrayControllerI.ARRANGED_OBJECTS);
+			willChangeValueForKey(NSArrayController.ARRANGED_OBJECTS);
 			
 			List selectedObjects = null;
 
@@ -440,7 +440,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 				selectedObjects = getSelectedObjects();
 			}
 			observableArrangedObjects = new ObservableArray(this, this,
-					NSArrayControllerI.ARRANGED_OBJECTS, arrangeObjects(getContentArray()));
+					NSArrayController.ARRANGED_OBJECTS, arrangeObjects(getContentArray()));
 
 			if (chSel) {
 				selectionIndexes = Utils.indexesInList(getArrangedObjects(),
@@ -449,7 +449,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 			return;
 		} finally {
 
-			didChangeValueForKey(NSArrayControllerI.ARRANGED_OBJECTS);
+			didChangeValueForKey(NSArrayController.ARRANGED_OBJECTS);
 			selectionDidChange();
 			
 		}
@@ -494,7 +494,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 		if(!doCommitStuff())
 			return;
 		
-		if (equals(indexes))
+		if (selectionIndexes.equals(indexes))
 			return;
 
 		try {
@@ -548,7 +548,7 @@ public class NSArrayControllerImpl extends NSObjectControllerImpl implements
 
 	@Override
 	public List mutableArrayValueForKey(String key) {
-		if (key.equals(NSArrayControllerI.ARRANGED_OBJECTS))
+		if (key.equals(NSArrayController.ARRANGED_OBJECTS))
 			return getArrangedObjects();
 		return super.mutableArrayValueForKey(key);
 	}

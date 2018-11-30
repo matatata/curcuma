@@ -298,7 +298,7 @@ class IndexSetImpl implements Iterable<Integer>, Serializable, IndexSet {
 			return false;
 		}
 
-		if (!getClass().isAssignableFrom(obj.getClass())) {
+		if (!(obj instanceof IndexSetImpl)) {
 			return false;
 		}
 

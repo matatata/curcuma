@@ -7,14 +7,14 @@ import java.util.Set;
 import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
 
-import de.ceruti.curcuma.api.appkit.controller.NSObjectControllerI;
+import de.ceruti.curcuma.api.appkit.controller.NSObjectController;
 import de.ceruti.curcuma.appkit.NSDefaultEditable;
 import de.ceruti.curcuma.foundation.NSObjectImpl;
 import de.ceruti.curcuma.keyvalueobserving.NoKeyValueObserving;
 
 @NSDefaultEditable
 @SuppressWarnings("unchecked")
-public class NSObjectControllerImpl extends NSObjectImpl implements NSObjectControllerI {
+public class NSObjectControllerImpl extends NSObjectImpl implements NSObjectController {
 	private static Category logger = Logger
 			.getInstance(NSObjectControllerImpl.class);
   

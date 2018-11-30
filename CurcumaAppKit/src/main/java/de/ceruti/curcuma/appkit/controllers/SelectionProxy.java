@@ -12,8 +12,8 @@ import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSSelectionMarker;
-import de.ceruti.curcuma.api.appkit.controller.NSArrayControllerI;
-import de.ceruti.curcuma.api.appkit.controller.NSObjectControllerI;
+import de.ceruti.curcuma.api.appkit.controller.NSArrayController;
+import de.ceruti.curcuma.api.appkit.controller.NSObjectController;
 import de.ceruti.curcuma.api.core.IndexSet;
 import de.ceruti.curcuma.api.keyvaluecoding.ErrorHandling;
 import de.ceruti.curcuma.api.keyvaluecoding.KeyValueCoding;
@@ -37,12 +37,12 @@ import de.ceruti.curcuma.keyvalueobserving.KeyValueObservingUtils;
 @KeyValueObservable
 class SelectionProxy implements ErrorHandling, KVObserver {
 	private static Category logger = Logger.getInstance(SelectionProxy.class);
-	private NSObjectControllerI controller;
+	private NSObjectController controller;
 	private Map<String, Object> cachedValues = new HashMap<String, Object>();
 	private Collection<Object> observableSelection = new ArrayList<Object>();
 	private Set<String> cachedKeys;
 
-	SelectionProxy(NSObjectControllerI c) {
+	SelectionProxy(NSObjectController c) {
 		this.controller = c;
 		observableSelection.addAll(controller.getSelectedObjects());
 	}
@@ -105,7 +105,7 @@ class SelectionProxy implements ErrorHandling, KVObserver {
 		} else if (allVals.size() == 1) {
 			val = allVals.get(0);
 		} else {
-			if (!((NSArrayControllerI) controller).isAlwaysUsesMultipleValuesMarker()) {
+			if (!((NSArrayController) controller).isAlwaysUsesMultipleValuesMarker()) {
 				// first
 				Object first = allVals.get(0);
 				boolean heterogen = false;
@@ -167,8 +167,8 @@ class SelectionProxy implements ErrorHandling, KVObserver {
 
 	public void addObserver(KVObserver observer, String keyPath, Object context, int options) throws KVOException {
 		List<?> l = null;
-		if (selectionChangeDelta != null && controller instanceof NSArrayControllerI) {
-			l = Utils.objectsAtIndexes(((NSArrayControllerI) controller).getArrangedObjects(), selectionChangeDelta);
+		if (selectionChangeDelta != null && controller instanceof NSArrayController) {
+			l = Utils.objectsAtIndexes(((NSArrayController) controller).getArrangedObjects(), selectionChangeDelta);
 			logger.debug(
 					"addObserver(" + keyPath + ") will only affect " + selectionChangeDelta + " observer=" + observer);
 		} else {
@@ -190,8 +190,8 @@ class SelectionProxy implements ErrorHandling, KVObserver {
 
 	public void removeObserver(KVObserver observer, String keyPath) {
 		List<?> l = null;
-		if (selectionChangeDelta != null && controller instanceof NSArrayControllerI) {
-			l = Utils.objectsAtIndexes(((NSArrayControllerI) controller).getArrangedObjects(), selectionChangeDelta);
+		if (selectionChangeDelta != null && controller instanceof NSArrayController) {
+			l = Utils.objectsAtIndexes(((NSArrayController) controller).getArrangedObjects(), selectionChangeDelta);
 			logger.debug("removeObserver(" + keyPath + ") will only affect " + selectionChangeDelta + " observer="
 					+ observer);
 		} else {
