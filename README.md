@@ -2,7 +2,12 @@
 
 Java-Libraries inspired by Apple-Cocoa's UI-technologies KeyValue-Coding/Observing/Binding. It boils down to data binding which is nothing special anymore nowadays. Still those APIs go beyond simple data binding by allowing to observe and bind data across an object-graph and across lists. This is a big help when construction master-details-views.
 
-I had created them ages ago (JavaSE 1.4) and did not look at them for many years. Development was mostly quick and dirty but I decided to put it on github anyway.
+I had created them ages ago (JavaSE 1.4) and did not look at them for many years. Development was mostly quick and dirty but I decided to put it on github anyway. I finally updated to at least Java 8. Note that the heavy lifting of AspectJ does not work with newer java compilers, so I compile using javac 8 . On osx I switch to it using: 
+
+
+    export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+ 
+ 
 
 Build from source
 
