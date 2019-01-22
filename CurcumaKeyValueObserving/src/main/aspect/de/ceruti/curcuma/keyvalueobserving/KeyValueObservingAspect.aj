@@ -20,7 +20,6 @@ along with Curcuma.  If not, see <http://www.gnu.org/licenses/>.
 
 package de.ceruti.curcuma.keyvalueobserving;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -198,15 +197,6 @@ aspect KeyValueObservingAspect  {
 	//x -> (y.z -> [ObserverInfos])
 	private Map<String,ObserverInfoListMap> KeyValueObservingSupport.forwards = new HashMap<String,ObserverInfoListMap>();
 
-
-	/**
-	 * Wenn ein Observer o f�r den Keypath x.y registeriert wurde, so werden
-	 * forwarder eingerichtet, die �nderungen von y, nach o propagieren. Bei
-	 * einem l�ngerem Keypath geht das rekursiv so weiter. z.B. Sei o f�r x.y.z
-	 * registriert, so leitet ein forwarder �nderungen von z nach y und ein
-	 * weiterer von y hierher.
-	 */
-//	private static KVObserver backwardPropagator = new BackwardPropagator();
 	
 	private static KVObserver dependentKeyPathNotifier = new DependentKeyPathNotifier();
 	
@@ -227,16 +217,16 @@ aspect KeyValueObservingAspect  {
 	
 	
 	
-	private ObserverInfoList KeyValueObservingSupport.getForwardersForKeyPath(String key,String tail,boolean autocreate){
+	private ObserverInfoList KeyValueObservingSupport.getForwardersForKeyPath(String head,String tail,boolean autocreate){
 		ObserverInfoListMap c = null;
-		if(!forwards.containsKey(key))
+		if(!forwards.containsKey(head))
 		{	
 			c = new ObserverInfoListMap();
-			forwards.put(key,c);
+			forwards.put(head,c);
 			return (ObserverInfoList) c.get(tail,autocreate);
 		}
 		else
-			return (ObserverInfoList) forwards.get(key).get(tail,autocreate);
+			return (ObserverInfoList) forwards.get(head).get(tail,autocreate);
 	}
 	
 		
@@ -253,7 +243,7 @@ aspect KeyValueObservingAspect  {
 			forwards.remove(head);
 	}
 	
-	public static class ObserverInfo {
+	public static class ObserverInfo extends BackwardPropagator{
 		private KVObserver observer;
 		private Object context;
 		private int options;
@@ -262,7 +252,6 @@ aspect KeyValueObservingAspect  {
 		private KeyValueCoding kvc;
 		private String head;
 		private Object snapshot = KeyValueObservingUtils.INVALID_SNAPSHOT;
-		private BackwardPropagator bp;
 		
 
 		
@@ -284,7 +273,6 @@ aspect KeyValueObservingAspect  {
 		
 
 		boolean isBackwardPropagation() {
-//			return observer==backwardPropagator;
 			return observer instanceof BackwardPropagator;
 		}
 		
@@ -443,6 +431,12 @@ aspect KeyValueObservingAspect  {
 			
 			sendEvent(evt);
 		}
+		
+		@Override
+		public String toString() {
+			return "ObserverInfo: {" + keyPath + ", observer=" +observer.toString() + ", context=" + context +"}";
+		}
+		
 	}
 	
 	private Map<String,KVObserver> KeyValueObservingSupport.depKeysObserved = new HashMap<String,KVObserver>();
@@ -501,6 +495,10 @@ aspect KeyValueObservingAspect  {
 	
 	private static class BackwardPropagator implements KVObserver {
 
+		BackwardPropagator(){
+			
+		}
+		
 		@Override
 		public void observeValue(String keypath, KeyValueObserving object, KVOEvent change, Object context) {
 			((ObserverInfo)context).sendEvent(change);
@@ -545,11 +543,6 @@ aspect KeyValueObservingAspect  {
 	
 	public void KeyValueObservingSupport.addObserver(KVObserver observer, String keyPath, Object context, int options) throws KVOException {
 		
-//		if(isDefinedKeyPath(keyPath) != IsDefinedKeyReturnCode.YES){
-//			throw new KVOException("Cannot observe " + keyPath + " of " + kvc);
-//			logger.warn("Observer " + observer + " cannot observe " + keyPath + " of " + this );
-//		}
-		
 		StringBuilder headBuf = new StringBuilder();
 		StringBuilder tailBuf = new StringBuilder();
 		
@@ -559,13 +552,13 @@ aspect KeyValueObservingAspect  {
 			return;
 		}
 		
+		//
+		// we have a keyPath head.tail and must recurse
+		
 		String head = headBuf.toString();
 		String tail = tailBuf.toString();
 		
 		ObserverInfo obsInfo = new ObserverInfo(observer,context,options,this,this,keyPath);
-		
-		
-		
 				
 		Object o = null;
 		try {
@@ -578,9 +571,7 @@ aspect KeyValueObservingAspect  {
 	
 		Collection<ObserverInfo> m = getForwardersForKeyPath(head,tail,true);
 		m.add(obsInfo);
-		
-		BackwardPropagator bp = new BackwardPropagator();
-		obsInfo.bp = bp;
+
 		
 		if(!(o instanceof KeyValueObserving))
 		{
@@ -588,9 +579,7 @@ aspect KeyValueObservingAspect  {
 			return;
 		}
 
-//		((KeyValueObserving)o).addObserver(backwardPropagator, tail, obsInfo, options);
-
-		((KeyValueObserving)o).addObserver(bp, tail, obsInfo, options);
+		((KeyValueObserving)o).addObserver(obsInfo, tail, obsInfo, options);
 	}
 	
 
@@ -643,12 +632,12 @@ aspect KeyValueObservingAspect  {
 					ObserverInfo obsInfo = obsIterator.next();
 					if(reattachForwarder && theValueForKey instanceof KeyValueObserving) {
 						try{
-							((KeyValueObserving)theValueForKey).addObserver(obsInfo.bp, tail,obsInfo,obsInfo.options);
+							((KeyValueObserving)theValueForKey).addObserver(obsInfo, tail,obsInfo,obsInfo.options);
 						}catch(KVOException e) {
 							logger.debug("Cannot observe '" + tail + "' of Object [" + theValueForKey + "]");
 						}
 					}
-					// Und �nderung bekannt machen
+					// Und Änderung bekannt machen
 					{
 						if(obsInfo.requiresNewValue()
 								&& sharedNewValue==unitializedVal) {
@@ -926,8 +915,7 @@ aspect KeyValueObservingAspect  {
 				ObserverInfo obsInfo = it.next();
 				if(obsInfo.observer == observer){
 					if(o instanceof KeyValueObserving){
-						((KeyValueObserving)o).removeObserver(obsInfo.bp, tail);
-						obsInfo.bp = null;
+						((KeyValueObserving)o).removeObserver(obsInfo, tail);
 					}
 					
 					it.remove();
@@ -969,7 +957,7 @@ aspect KeyValueObservingAspect  {
 						ObserverInfoList obil = getForwardersForKeyPath(key, keypath,false);
 						for(Iterator<ObserverInfo> obs = obil.iterator(); obs.hasNext();) {
 							ObserverInfo ifo = obs.next();
-							((KeyValueObserving)valueAboutToChange).removeObserver(ifo.bp, keypath);
+							((KeyValueObserving)valueAboutToChange).removeObserver(ifo, keypath);
 						}
 						
 					} catch(KVOException e)	{
