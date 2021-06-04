@@ -30,8 +30,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.core.IndexSet;
 import de.ceruti.curcuma.api.keyvaluecoding.ErrorHandling;
@@ -187,7 +187,7 @@ aspect KeyValueObservingAspect  {
 	
 	
 	
-	private static Category logger = Logger.getInstance(KeyValueObservingAspect.class);
+	private static Logger logger = LogManager.getLogger(KeyValueObservingAspect.class);
 	
 	/**
 	 * x -> [ObserverInfo] (some of them might be propagating backwards)

@@ -1,7 +1,7 @@
 package de.ceruti.curcuma.appkit.widgets;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import de.ceruti.curcuma.api.appkit.view.table.NSTableColumn;
 import de.ceruti.curcuma.api.appkit.view.table.NSTableView;
@@ -11,8 +11,7 @@ import de.ceruti.curcuma.appkit.view.cells.WidgetPlugin;
 public abstract class AbstractWidgetPlugIn extends AbstractViewPlugIn implements
 		WidgetPlugin {
 
-	private static Category logger = Logger
-			.getInstance(AbstractWidgetPlugIn.class);
+	private static Logger logger = org.apache.logging.log4j.LogManager.getLogger(AbstractWidgetPlugIn.class);
 
 	private WidgetPlugin.Delegate association;
 	

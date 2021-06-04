@@ -28,8 +28,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.core.IndexSet;
 import de.ceruti.curcuma.api.keyvaluecoding.KeyValueCoding;
@@ -46,7 +47,7 @@ import de.ceruti.curcuma.keyvaluecoding.KeyValueCodingUtils;
 
 
 class KeyValueObservingImpl  {
-	private static Category logger = Logger.getInstance(KeyValueObservingImpl.class);
+	private static Logger logger = LogManager.getLogger(KeyValueObservingImpl.class);
 	
 	/**
 	 * x -> [ObserverInfo] (some of them might be propagating backwards)

@@ -9,13 +9,12 @@ import java.awt.event.FocusListener;
 import java.awt.event.TextEvent;
 import java.awt.event.TextListener;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 
 public class AWTTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
-	private static Category logger = Logger
-			.getInstance(AWTTextWidgetPlugIn.class);
+	private static Logger logger = org.apache.logging.log4j.LogManager.getLogger(AWTTextWidgetPlugIn.class);
 
 	public AWTTextWidgetPlugIn() {
 		super();

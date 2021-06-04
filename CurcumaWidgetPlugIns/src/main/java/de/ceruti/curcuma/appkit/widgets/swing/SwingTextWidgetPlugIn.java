@@ -13,14 +13,13 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.JTextComponent;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.appkit.widgets.awt.AbstractAWTTextWidgetPlugIn;
 
 public class SwingTextWidgetPlugIn extends AbstractAWTTextWidgetPlugIn {
-	private static Category logger = Logger
-			.getInstance(SwingTextWidgetPlugIn.class);
+	private static Logger logger = org.apache.logging.log4j.LogManager.getLogger(SwingTextWidgetPlugIn.class);
 
 	private DefaultInputVerifier myInputVerifier = new DefaultInputVerifier();
 

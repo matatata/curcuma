@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.ObjectUtils;
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSSelectionMarker;
 import de.ceruti.curcuma.api.appkit.controller.NSArrayController;
@@ -36,7 +36,7 @@ import de.ceruti.curcuma.keyvalueobserving.KeyValueObservingUtils;
 @KeyValueCodeable
 @KeyValueObservable
 class SelectionProxy implements ErrorHandling, KVObserver {
-	private static Category logger = Logger.getInstance(SelectionProxy.class);
+	private static Logger logger = LogManager.getLogger(SelectionProxy.class);
 	private NSObjectController controller;
 	private Map<String, Object> cachedValues = new HashMap<String, Object>();
 	private Collection<Object> observableSelection = new ArrayList<Object>();

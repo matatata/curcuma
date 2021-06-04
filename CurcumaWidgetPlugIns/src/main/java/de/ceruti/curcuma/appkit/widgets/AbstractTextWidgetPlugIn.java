@@ -1,15 +1,15 @@
 package de.ceruti.curcuma.appkit.widgets;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import de.ceruti.curcuma.appkit.view.cells.TextFieldCellWidgetPlugin;
 
 public abstract class AbstractTextWidgetPlugIn extends AbstractActionWidgetPlugIn
 		implements TextFieldCellWidgetPlugin {
 
-	private static Category logger = Logger
-			.getInstance(AbstractTextWidgetPlugIn.class);
+	private static Logger logger = LogManager
+			.getLogger(AbstractTextWidgetPlugIn.class);
 
 	protected boolean inEditingState = false;
 

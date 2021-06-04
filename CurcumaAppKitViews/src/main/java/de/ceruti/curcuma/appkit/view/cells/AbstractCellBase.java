@@ -1,8 +1,8 @@
 package de.ceruti.curcuma.appkit.view.cells;
 
 import org.apache.commons.lang.ObjectUtils;
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.view.cells.NSCell;
 import de.ceruti.curcuma.api.appkit.view.cells.NSEditorCell;
@@ -17,7 +17,7 @@ import de.ceruti.curcuma.keyvalueobserving.PostKVONotifications;
 
 public abstract class AbstractCellBase extends NSObjectImpl implements NSCell,
 		WidgetPlugin.Delegate {
-	private static Category logger = Logger.getInstance(AbstractCellBase.class);
+	private static Logger logger = LogManager.getLogger(AbstractCellBase.class);
 	
 	
 	private WidgetPlugin plugin;

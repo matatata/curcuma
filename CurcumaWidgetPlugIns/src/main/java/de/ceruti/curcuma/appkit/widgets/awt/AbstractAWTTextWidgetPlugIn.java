@@ -10,8 +10,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.appkit.widgets.AbstractTextWidgetPlugIn;
 
@@ -57,8 +57,7 @@ public abstract class AbstractAWTTextWidgetPlugIn extends
 	};
 
 
-	private static Category logger = Logger
-			.getInstance(AbstractAWTTextWidgetPlugIn.class);
+	private static Logger logger = org.apache.logging.log4j.LogManager.getLogger(AbstractAWTTextWidgetPlugIn.class);
 
 	private Component component;
 

@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSEditable;
 import de.ceruti.curcuma.api.appkit.NSEditor;
@@ -33,7 +33,7 @@ import de.ceruti.curcuma.api.appkit.NSEditor;
 
 
 aspect NSEditableAspect {
-	private static Category logger = Logger.getInstance(NSEditableAspect.class);
+	private static Logger logger = LogManager.getLogger(NSEditableAspect.class);
 	
 	public static interface NSEditableSupport extends NSEditable {
 	}

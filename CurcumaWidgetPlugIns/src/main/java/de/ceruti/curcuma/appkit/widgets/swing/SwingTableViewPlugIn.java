@@ -11,8 +11,8 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.view.cells.NSCell;
 import de.ceruti.curcuma.api.appkit.view.cells.NSEditorCell;
@@ -24,7 +24,7 @@ import de.ceruti.curcuma.appkit.view.cells.WidgetPlugin;
 import de.ceruti.curcuma.appkit.widgets.AbstractTableViewPlugIn;
 
 public class SwingTableViewPlugIn extends AbstractTableViewPlugIn  {
-	private static Category logger = Logger.getInstance(SwingTableViewPlugIn.class);
+	private static Logger logger = LogManager.getLogger(SwingTableViewPlugIn.class);
 	
 	private JTable table;
 	private final SelectionListener selectionListener = new SelectionListener();

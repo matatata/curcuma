@@ -5,8 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import de.ceruti.curcuma.api.keyvaluebinding.BindingInfo;
 import de.ceruti.curcuma.api.keyvaluebinding.BindingOptionDescription;
@@ -20,7 +21,7 @@ import de.ceruti.curcuma.core.utils.MapMap;
 import de.ceruti.curcuma.keyvalueobserving.KVOSettingEvent;
 
 public aspect KeyValueBindingCreationAspect {
-	private static Category logger = Logger.getInstance(KeyValueBindingCreationAspect.class);
+	private static Logger logger = LogManager.getLogger(KeyValueBindingCreationAspect.class);
 	
 	private interface KeyValueBindingCreationSupport extends KeyValueBindingCreation, KeyValueCoding, ErrorHandling {
 	}

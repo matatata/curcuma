@@ -27,7 +27,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.text.JTextComponent;
 
-import org.apache.log4j.Category;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSSelectionMarker;
 import de.ceruti.curcuma.api.appkit.controller.NSArrayFilter;
@@ -62,7 +63,7 @@ import de.ceruti.curcuma.keyvaluebinding.DefaultBindingOptions;
 @SuppressWarnings("rawtypes")
 public class ShowCase extends JFrame {
 
-	private final static Category logger = Category.getInstance(ShowCase.class);
+	private final static Logger logger = LogManager.getLogger(ShowCase.class);
 	
 	JTable table;
 	JButton addButton;

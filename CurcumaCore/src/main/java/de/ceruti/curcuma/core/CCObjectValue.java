@@ -20,13 +20,13 @@ along with Curcuma.  If not, see <http://www.gnu.org/licenses/>.
 
 package de.ceruti.curcuma.core;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.core.Value;
 
 final class CCObjectValue extends AbstractValue {
-	private static Category logger = Logger.getInstance(CCObjectValue.class);
+	private static final Logger logger = LogManager.getLogger(CCObjectValue.class);
 	
 	private Object obj;
 	

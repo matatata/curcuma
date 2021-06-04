@@ -3,8 +3,8 @@ package de.ceruti.curcuma.appkit.view.cells;
 import java.text.Format;
 import java.text.ParseException;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSEditor;
 import de.ceruti.curcuma.api.appkit.view.NSText;
@@ -13,7 +13,7 @@ import de.ceruti.curcuma.api.keyvaluecoding.exceptions.ValidationException;
 
 
 public final class NSTextFieldCell extends NSActionCellImpl implements TextFieldCellWidgetPlugin.Delegate, NSTextCell {
-	private static transient Category logger = Logger.getInstance(NSTextFieldCell.class);
+	private static transient Logger logger = LogManager.getLogger(NSTextFieldCell.class);
 
 	private Format format;
 	private Format formatHasFocus;

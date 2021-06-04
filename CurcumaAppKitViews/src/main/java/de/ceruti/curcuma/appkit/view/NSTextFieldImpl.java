@@ -1,8 +1,8 @@
 package de.ceruti.curcuma.appkit.view;
 
 import org.apache.commons.lang.ObjectUtils;
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSSelectionMarker;
 import de.ceruti.curcuma.api.appkit.view.NSText;
@@ -14,7 +14,7 @@ import de.ceruti.curcuma.keyvaluebinding.KeyValueBindingSyncException;
 
 public class NSTextFieldImpl extends NSEditingControl implements NSTextField {
 
-	private static Category logger = Logger.getInstance(NSTextFieldImpl.class);
+	private static Logger logger = LogManager.getLogger(NSTextFieldImpl.class);
 	
 	
 	public NSTextFieldImpl() {

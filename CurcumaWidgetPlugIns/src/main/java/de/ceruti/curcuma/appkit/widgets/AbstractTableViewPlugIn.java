@@ -2,8 +2,8 @@ package de.ceruti.curcuma.appkit.widgets;
 
 import java.util.Iterator;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.view.table.NSTableView;
 import de.ceruti.curcuma.api.core.IndexSet;
@@ -14,7 +14,7 @@ import de.ceruti.curcuma.appkit.view.table.TablePlugin;
 public abstract class AbstractTableViewPlugIn extends AbstractViewPlugIn
 		implements TablePlugin {
 
-	private static Category logger = Logger.getInstance(AbstractTableViewPlugIn.class);
+	private static Logger logger = LogManager.getLogger(AbstractTableViewPlugIn.class);
 	
 	/*
 	 * (non-Javadoc)

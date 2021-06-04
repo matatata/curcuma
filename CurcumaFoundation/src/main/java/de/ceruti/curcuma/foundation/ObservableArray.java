@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.core.IndexSet;
 import de.ceruti.curcuma.api.core.Range;
@@ -23,7 +23,7 @@ import de.ceruti.curcuma.keyvalueobserving.KVOIndexedChangeEvent;
 import de.ceruti.curcuma.keyvalueobserving.KeyValueObservingUtils;
 
 public class ObservableArray extends AbstractObservableArray {
-	private static Category logger = Logger.getInstance(ObservableArray.class);
+	private static Logger logger = LogManager.getLogger(ObservableArray.class);
 		
 	
 	private Collection<Proxy> proxies = new ArrayList<Proxy>();

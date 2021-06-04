@@ -6,8 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.core.IndexSet;
 import de.ceruti.curcuma.api.core.Range;
@@ -26,7 +26,7 @@ import de.ceruti.curcuma.keyvaluecoding.ClassDescriptionCache;
 
 public class KeyValueObservingUtils {
 
-	private static Category logger = Logger.getInstance(KeyValueObservingUtils.class);
+	private static Logger logger = LogManager.getLogger(KeyValueObservingUtils.class);
 	
 	private static Selector keyPathsForValuesAffectingValueForKeySelector;
 	static {

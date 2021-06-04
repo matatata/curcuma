@@ -7,8 +7,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSEditable;
 import de.ceruti.curcuma.api.appkit.controller.NSArrayController;
@@ -34,7 +34,7 @@ import de.ceruti.curcuma.keyvalueobserving.PostKVONotifications;
 
 public class NSTable extends NSViewBase implements NSTableView {
 
-	private static transient Category logger = Logger.getInstance(NSTable.class);
+	private static transient Logger logger = LogManager.getLogger(NSTable.class);
 	private IndexSet selectionIndexes = Factory.emptyIndexSet();
 	private List<?> contentArray = new ArrayList<Object>();
 	private List<NSTableColumn> tableColumns = new ArrayList<NSTableColumn>();

@@ -11,12 +11,11 @@ import javax.swing.JComponent;
 import net.java.balloontip.BalloonTip;
 import net.java.balloontip.styles.EdgedBalloonStyle;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 public class BalloonTipSupport implements TipInterface {
-	private static Category logger = Logger
-			.getInstance(BalloonTipSupport.class);
+	private static Logger logger = org.apache.logging.log4j.LogManager.getLogger(BalloonTipSupport.class);
 
 	private static EdgedBalloonStyle style = new EdgedBalloonStyle(Color.WHITE,
 			Color.GRAY);

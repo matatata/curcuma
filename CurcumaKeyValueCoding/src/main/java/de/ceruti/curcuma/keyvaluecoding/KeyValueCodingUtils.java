@@ -25,8 +25,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import de.ceruti.curcuma.api.keyvaluecoding.KeyValueCoding;
 import de.ceruti.curcuma.api.keyvaluecoding.exceptions.NonCompliantAccessorFoundException;
@@ -35,8 +35,8 @@ import de.ceruti.curcuma.api.keyvaluecoding.exceptions.ValidationException;
 
 public class KeyValueCodingUtils {
 
-	private static Category logger = Logger
-	.getInstance(KeyValueCodingUtils.class);
+	private static Logger logger = LogManager
+	.getLogger(KeyValueCodingUtils.class);
 	
 	public static Object getValueForUndefinedKey(KeyValueCoding owner, String key) {
 		throw new NonCompliantAccessorFoundException(owner, key);

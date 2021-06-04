@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.controller.NSObjectController;
 import de.ceruti.curcuma.appkit.NSDefaultEditable;
@@ -15,8 +15,8 @@ import de.ceruti.curcuma.keyvalueobserving.NoKeyValueObserving;
 @NSDefaultEditable
 @SuppressWarnings("unchecked")
 public class NSObjectControllerImpl extends NSObjectImpl implements NSObjectController {
-	private static Category logger = Logger
-			.getInstance(NSObjectControllerImpl.class);
+	private static Logger logger = LogManager
+			.getLogger(NSObjectControllerImpl.class);
   
 	private Class objectClass;
 	private Object content;

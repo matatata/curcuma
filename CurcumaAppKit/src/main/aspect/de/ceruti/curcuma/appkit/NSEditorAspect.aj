@@ -20,8 +20,8 @@ along with Curcuma.  If not, see <http://www.gnu.org/licenses/>.
 package de.ceruti.curcuma.appkit;
 
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import de.ceruti.curcuma.api.appkit.NSEditable;
 import de.ceruti.curcuma.api.appkit.NSEditor;
@@ -66,7 +66,7 @@ aspect NSEditorAspect {
 	
 	private Subject<Observer<NSEditorEvent>, NSEditorEvent> NSEditorSupport.subjectImpl = new SubjectImpl<Observer<NSEditorEvent>, NSEditorEvent>();
 
-	private static Category logger = Logger.getInstance(NSEditorAspect.class);
+	private static Logger logger = LogManager.getLogger(NSEditorAspect.class);
 	
 	
 //	/**

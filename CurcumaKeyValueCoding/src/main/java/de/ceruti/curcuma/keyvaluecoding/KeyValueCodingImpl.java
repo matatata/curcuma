@@ -25,8 +25,8 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import de.ceruti.curcuma.api.core.exceptions.ConversionException;
 import de.ceruti.curcuma.api.keyvaluecoding.ErrorHandling;
@@ -40,8 +40,8 @@ import de.ceruti.curcuma.core.ValueConverter;
 public class KeyValueCodingImpl implements KeyValueCoding {
 	
 
-	private static Category logger = Logger
-	.getInstance(KeyValueCodingImpl.class);
+	private static Logger logger = LogManager
+	.getLogger(KeyValueCodingImpl.class);
 	
 	private final ErrorHandling errHandling;
 

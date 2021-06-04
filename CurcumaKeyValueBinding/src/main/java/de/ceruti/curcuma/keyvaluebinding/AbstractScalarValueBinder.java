@@ -1,8 +1,8 @@
 package de.ceruti.curcuma.keyvaluebinding;
 
 import org.apache.commons.lang.ObjectUtils;
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.core.ValueTransformer;
 import de.ceruti.curcuma.api.core.exceptions.ConversionException;
@@ -26,7 +26,7 @@ import de.ceruti.curcuma.keyvalueobserving.KVOSettingEvent;
  */
 public abstract class AbstractScalarValueBinder implements KeyValueBinder, KVObserver {
 
-	private static Category logger = Logger.getInstance(AbstractScalarValueBinder.class);
+	private static Logger logger = LogManager.getLogger(AbstractScalarValueBinder.class);
 	
 	protected BindingInfoImpl info;
 	protected KeyValueBindingCreation bindingCreation;

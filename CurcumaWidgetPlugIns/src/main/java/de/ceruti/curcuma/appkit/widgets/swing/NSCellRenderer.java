@@ -9,16 +9,15 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableCellRenderer;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.view.cells.NSCell;
 import de.ceruti.curcuma.api.appkit.view.table.NSTableView;
 import de.ceruti.curcuma.appkit.view.cells.WidgetPlugin;
 
 class NSCellRenderer implements TableCellRenderer {
-	private static Category logger = Logger
-			.getInstance(NSCellRenderer.class);
+	private static Logger logger = org.apache.logging.log4j.LogManager.getLogger(NSCellRenderer.class);
 	
 	private final NSTableView view;
 	public NSCellRenderer(NSTableView view) {

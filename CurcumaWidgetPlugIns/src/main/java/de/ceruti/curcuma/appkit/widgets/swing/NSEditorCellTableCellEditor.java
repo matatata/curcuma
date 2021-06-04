@@ -13,8 +13,8 @@ import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.table.TableCellEditor;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSEditor;
 import de.ceruti.curcuma.api.appkit.view.NSText;
@@ -33,8 +33,7 @@ import de.ceruti.curcuma.appkit.view.cells.WidgetPlugin;
 class NSEditorCellTableCellEditor extends AbstractCellEditor implements NSEditor,
 		TableCellEditor, NSCell.Delegate, NSTextCell.Delegate,
 		NSActionCell.Delegate, NSEditorCell.Delegate, NSComboCell.Delegate {
-	private static Category logger = Logger
-			.getInstance(NSEditorCellTableCellEditor.class);
+	private static Logger logger = org.apache.logging.log4j.LogManager.getLogger(NSEditorCellTableCellEditor.class);
 
 	private NSEditorCell editorCell;
 	private NSTableColumn editingColumn;

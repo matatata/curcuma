@@ -1,6 +1,6 @@
 package de.ceruti.curcuma.appkit.view.cells;
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.view.cells.NSActionCell;
 import de.ceruti.curcuma.api.appkit.view.cells.NSBoundedRangeCell;
@@ -13,7 +13,7 @@ import de.ceruti.curcuma.keyvalueobserving.PostKVONotifications;
 public class NSActionCellImpl extends AbstractCellBase implements
 		NSBoundedRangeCell, NSActionCell, ActionControlWidgetPlugin.Delegate,
 		BoundedRangeWidgetPlugin.Delegate {
-	private static Category logger = Logger.getInstance(NSActionCellImpl.class);
+	private static Logger logger = LogManager.getLogger(NSActionCellImpl.class);
 	
 	public NSActionCellImpl() {
 		super();

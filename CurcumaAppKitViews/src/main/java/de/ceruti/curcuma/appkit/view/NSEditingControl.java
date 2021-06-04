@@ -1,7 +1,7 @@
 package de.ceruti.curcuma.appkit.view;
 
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSEditable;
 import de.ceruti.curcuma.api.appkit.NSEditorEvent;
@@ -18,7 +18,7 @@ import de.ceruti.curcuma.keyvaluebinding.KeyValueBindingSyncException;
 @NSDefaultEditor
 public class NSEditingControl extends NSControlBase implements NSEditorControl {
 
-private static Category logger = Logger.getInstance(NSEditingControl.class);
+private static Logger logger = LogManager.getLogger(NSEditingControl.class);
 	
 	
 	public NSEditingControl() {

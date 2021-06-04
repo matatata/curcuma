@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang.ObjectUtils;
-import org.apache.log4j.Category;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import de.ceruti.curcuma.api.appkit.NSEditor;
 import de.ceruti.curcuma.api.appkit.view.ListDataSource;
@@ -39,7 +39,7 @@ public class NSComboBoxCell extends NSActionCellImpl implements NSComboCell,
 
 	
 	
-	private static transient Category logger = Logger.getInstance(NSComboBoxCell.class);
+	private static transient Logger logger = LogManager.getLogger(NSComboBoxCell.class);
 	private ListDataSource contentDataSource;
 	private ListDataSource displayDataSource;
 	
