@@ -13,10 +13,12 @@ Build from source
 
 `mvn clean install`
 
-You can start a rather senseless example Swing-UI that shows most of curcumas capabilities in editing and updating a collection of models
+You can start a rather senseless example Swing-UI that shows most of curcumas capabilities in editing and updating a collection of models that are bound via data binding and that use some validation.
 
 
 `java -jar CurcumaExamples/target/CurcumaExamples-*-jar-with-dependencies.jar`
+
+![](img/screenshot.png)
 
 
 # Eclipse
